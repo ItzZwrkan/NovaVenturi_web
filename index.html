@@ -3,7 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="google" content="notranslate">
     <title>Nova Venturi | Ručno izrađeni drveni detalji</title>
     
     <!-- Fonts -->
@@ -189,6 +188,9 @@
             const [selectedProduct, setSelectedProduct] = useState(null);
             const [activeImageIndex, setActiveImageIndex] = useState(0);
             const [isMenuOpen, setIsMenuOpen] = useState(false);
+            const [isImpressumOpen, setIsImpressumOpen] = useState(false);
+            const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
+            const [showImpressumDetails, setShowImpressumDetails] = useState(false);
             const [formData, setFormData] = useState({ name: '', email: '', message: '' });
             const [formStatus, setFormStatus] = useState('idle');
 
@@ -267,6 +269,68 @@
                 `;
             };
 
+            const ImpressumModal = () => {
+                if (!isImpressumOpen) return null;
+                return html`
+                    <div class="fixed inset-0 z-[110] flex items-center justify-center p-4 animate-fade-in">
+                        <div class="absolute inset-0 bg-stone-900/90 backdrop-blur-md" onClick=${() => setIsImpressumOpen(false)}></div>
+                        <div class="relative bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl p-8 md:p-12 animate-zoom-in">
+                            <button onClick=${() => setIsImpressumOpen(false)} class="absolute top-4 right-4 p-2 hover:bg-stone-100 rounded-full transition-colors"><${Icon} name="X" size=${24} /></button>
+                            <h2 class="text-3xl font-bold mb-8 text-stone-900">Impressum</h2>
+                            <div class="space-y-6 text-stone-600">
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Vlasnik</p>
+                                    <p class="text-lg font-medium text-stone-900">Smail Pajalic</p>
+                                </div>
+                                <div>
+                                    <p class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Email</p>
+                                    <p class="text-lg font-medium text-stone-900">info@novaventuri.com</p>
+                                </div>
+                                <div class="pt-4 border-t border-stone-100">
+                                    ${!showImpressumDetails ? html`
+                                        <button onClick=${() => setShowImpressumDetails(true)} class="w-full py-4 bg-amber-900/10 text-amber-900 rounded-xl font-bold hover:bg-amber-900/20 transition-all">Prikaži podatke / Details anzeigen</button>
+                                    ` : html`
+                                        <div class="space-y-6 animate-fade-in">
+                                            <div>
+                                                <p class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Adresa</p>
+                                                <p class="text-lg font-medium text-stone-900">Glockenblumenstr. 46, 70563, Stuttgart</p>
+                                            </div>
+                                            <div>
+                                                <p class="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Telefon</p>
+                                                <p class="text-lg font-medium text-stone-900">+49 178 4156300</p>
+                                            </div>
+                                        </div>
+                                    `}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            };
+
+            const DatenschutzModal = () => {
+                if (!isDatenschutzOpen) return null;
+                return html`
+                    <div class="fixed inset-0 z-[110] flex items-center justify-center p-4 animate-fade-in">
+                        <div class="absolute inset-0 bg-stone-900/90 backdrop-blur-md" onClick=${() => setIsDatenschutzOpen(false)}></div>
+                        <div class="relative bg-white w-full max-w-2xl max-h-[80vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col animate-zoom-in">
+                            <div class="p-6 border-b border-stone-100 flex items-center justify-between">
+                                <h2 class="text-2xl font-bold text-stone-900">Datenschutzerklärung</h2>
+                                <button onClick=${() => setIsDatenschutzOpen(false)} class="p-2 hover:bg-stone-100 rounded-full transition-colors"><${Icon} name="X" size=${24} /></button>
+                            </div>
+                            <div class="p-8 md:p-12 overflow-y-auto text-stone-600 text-sm leading-relaxed space-y-6">
+                                <div><h4 class="font-bold text-stone-900 mb-2">1. Datenschutz auf einen Blick</h4><p>Die Nutzung dieser Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit auf unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen im Kontaktformular) erhoben werden, erfolgt dies auf freiwilliger Basis.</p></div>
+                                <div><h4 class="font-bold text-stone-900 mb-2">2. Datenerfassung na našoj web stranici</h4><p>Kontaktformular: Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt auf Grundlage von Art. 6 Abs. 1 lit. b DSGVO.</p></div>
+                                <div><h4 class="font-bold text-stone-900 mb-2">3. Externe Links (Etsy)</h4><p>Unsere Website enthält Links zum Onlineshop "Etsy". Wenn Sie diese Links anklicken, verlassen Sie unsere Website. Bitte beachten Sie, dass für die Nutzung von Etsy die Datenschutzbestimmungen der Etsy Ireland UC gelten. Wir haben keinen Einfluss na die Datenerhebung und deren weitere Verwendung durch Etsy.</p></div>
+                                <div><h4 class="font-bold text-stone-900 mb-2">4. Ihre Rechte</h4><p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p></div>
+                                <div><h4 class="font-bold text-stone-900 mb-2">5. Analyse-Tools und Cookies</h4><p>Diese Website verwendet keine Cookies und keine Analyse-Tools (wie Google Analytics), um Ihr Nutzerverhalten nachzuverfolgen.</p></div>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            };
+
+
             if (view === 'collection') {
                 return html`
                     <div class="min-h-screen bg-stone-50 flex flex-col animate-fade-in">
@@ -322,6 +386,8 @@
             return html`
                 <div class="min-h-screen flex flex-col animate-fade-in">
                     <${Modal} />
+                    <${ImpressumModal} />
+                    <${DatenschutzModal} />
                     <nav class="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
                         <div class="container mx-auto px-6 h-20 flex items-center justify-between">
                             <div class="flex items-center gap-2 cursor-pointer" onClick=${() => navigateTo('home')}>
@@ -475,28 +541,34 @@
                         </div>
                     </section>
 
-                    <footer id="kontakt" class="bg-stone-100 pt-20 pb-10 border-t border-stone-200 px-6">
+                    <footer id="kontakt" class="bg-stone-900 pt-20 pb-10 border-t border-white/5 px-6 text-stone-400">
                         <div class="container mx-auto grid md:grid-cols-4 gap-12 mb-16">
                             <div class="col-span-2">
-                                <div class="flex items-center gap-2 mb-6 cursor-pointer" onClick=${() => navigateTo('home')}><${Logo} className="w-8 h-8" /><span class="text-xl font-bold tracking-tighter uppercase">NOVA VENTURI</span></div>
-                                <p class="text-stone-500 max-w-sm mb-6">Butik radionica specijalizirana za vrhunske drvene uredske dodatke i unikatne detalje. Posjetite nas na Etsy-u.</p>
+                                <div class="flex items-center gap-2 mb-6 cursor-pointer text-white" onClick=${() => navigateTo('home')}><${Logo} className="w-8 h-8" dark=${false} /><span class="text-xl font-bold tracking-tighter uppercase">NOVA VENTURI</span></div>
+                                <p class="text-stone-400 max-w-sm mb-6">Butik radionica specijalizirana za vrhunske drvene uredske dodatke i unikatne detalje. Posjetite nas na Etsy-u.</p>
                                 <div class="flex gap-4">
-                                    <a href="https://www.instagram.com/nova.venturi/" target="_blank" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-stone-600 shadow-sm hover:text-amber-900 transition-colors"><${Icon} name="Instagram" size=${20} /></a>
-                                    <a href="#" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-stone-600 shadow-sm hover:text-amber-900 transition-colors"><${Icon} name="Facebook" size=${20} /></a>
-                                    <a href="#personalizacija" class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-stone-600 shadow-sm hover:text-amber-900 transition-colors"><${Icon} name="Mail" size=${20} /></a>
+                                    <a href="https://www.instagram.com/nova.venturi/" target="_blank" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all"><${Icon} name="Instagram" size=${20} /></a>
+                                    <a href="#" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all"><${Icon} name="Facebook" size=${20} /></a>
+                                    <a href="#personalizacija" class="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all"><${Icon} name="Mail" size=${20} /></a>
                                 </div>
                             </div>
-                            <div><h4 class="font-bold mb-6">Kategorije</h4><ul class="space-y-4 text-stone-500">
-                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Uredski dodaci');}} class="hover:text-amber-900 transition-colors">Uredski dodaci</button></li>
-                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Organizacija');}} class="hover:text-amber-900 transition-colors">Organizacija</button></li>
-                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Kuhinja');}} class="hover:text-amber-900 transition-colors">Kuhinja</button></li>
+                            <div><h4 class="font-bold mb-6 text-white">Kategorije</h4><ul class="space-y-4">
+                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Uredski dodaci');}} class="hover:text-amber-500 transition-colors">Uredski dodaci</button></li>
+                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Organizacija');}} class="hover:text-amber-500 transition-colors">Organizacija</button></li>
+                                <li><button onClick=${() => {navigateTo('collection'); setActiveCategory('Kuhinja');}} class="hover:text-amber-500 transition-colors">Kuhinja</button></li>
                             </ul></div>
-                            <div><h4 class="font-bold mb-6">Podrška</h4><ul class="space-y-4 text-stone-500">
-                                <li><a href="https://www.etsy.com/shop/novaventuri/" target="_blank" class="hover:text-amber-900 transition-colors">Više na Etsy</a></li>
-                                <li><a href="#personalizacija" class="hover:text-amber-900 transition-colors">Narudžbe po želji</a></li>
+                            <div><h4 class="font-bold mb-6 text-white">Podrška</h4><ul class="space-y-4">
+                                <li><a href="https://www.etsy.com/shop/novaventuri/" target="_blank" class="hover:text-amber-500 transition-colors">Više na Etsy</a></li>
+                                <li><a href="#personalizacija" class="hover:text-amber-500 transition-colors">Narudžbe po želji</a></li>
                             </ul></div>
                         </div>
-                        <div class="border-t border-stone-200 pt-10 text-center text-stone-400 text-sm"><p>© 2024 Nova Venturi Woodworking. Ručno izrađeno u Hrvatskoj.</p></div>
+                        <div class="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-stone-500 text-sm">
+                            <p>© 2024 Nova Venturi Woodworking. Ručno izrađeno u Hrvatskoj.</p>
+                            <div class="flex gap-6">
+                                <button onClick=${() => { setIsImpressumOpen(true); setShowImpressumDetails(false); }} class="hover:text-amber-500 transition-colors">Impressum</button>
+                                <button onClick=${() => setIsDatenschutzOpen(true)} class="hover:text-amber-500 transition-colors">Datenschutz</button>
+                            </div>
+                        </div>
                     </footer>
 
                     ${isMenuOpen && html`
