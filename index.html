@@ -61,14 +61,6 @@
 </head>
 <body>
     <div id="root"></div>
-
-    <!-- Hidden form for Netlify detection -->
-    <form name="contact" data-netlify="true" hidden>
-      <input type="text" name="ime" />
-      <input type="email" name="email" />
-      <textarea name="poruka"></textarea>
-    </form>
-
     <script type="text/babel">
         const { useState, useEffect, useRef } = React;
 
@@ -799,5 +791,10 @@
         const root = ReactDOM.createRoot(document.getElementById('root'));
         root.render(<App />);
     </script>
+    <form name="contact" data-netlify="true" style="display: none;">
+  <input type="text" name="ime" />
+  <input type="email" name="email" />
+  <textarea name="poruka"></textarea>
+</form>
 </body>
 </html>
