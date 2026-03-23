@@ -40,7 +40,11 @@
         .no-scrollbar::-webkit-scrollbar { display: none; }
         .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
         @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+        @keyframes zoomIn { from { transform: scale(0.95); opacity: 0; } to { transform: scale(1); opacity: 1; } }
         .animate-fade-in { animation: fadeIn 0.5s ease-out forwards; }
+        .animate-slide-up { animation: slideUp 0.6s ease-out forwards; }
+        .animate-zoom-in { animation: zoomIn 0.3s ease-out forwards; }
         .serif { font-family: 'Playfair Display', serif; }
         #error-display { position: fixed; bottom: 0; left: 0; right: 0; background: #fee2e2; color: #991b1b; padding: 1rem; font-family: monospace; z-index: 9999; border-top: 1px solid #f87171; display: none; }
     </style>
@@ -60,13 +64,13 @@
     <div id="error-display"></div>
 
     <script type="text/babel" data-type="module">
-        import React, { useState } from 'https://esm.sh/react@18';
+        import React, { useState, useEffect } from 'https://esm.sh/react@18';
         import { createRoot } from 'https://esm.sh/react-dom@18/client';
         import { 
-          X, ChevronLeft, ChevronRight, ExternalLink, ArrowRight, 
-          Menu, Mail, MessageSquare 
+          X, ChevronLeft, ChevronRight, ExternalLink, ArrowLeft, ArrowRight, 
+          Filter, Menu, Instagram, Facebook, Mail, MessageSquare, ShoppingBag 
         } from 'https://esm.sh/lucide-react@0.460.0?deps=react@18';
-        import { motion } from 'https://esm.sh/framer-motion@11.11.11?deps=react@18,react-dom@18';
+        import { motion, AnimatePresence } from 'https://esm.sh/framer-motion@11.11.11?deps=react@18,react-dom@18';
 
         const PRODUCTS = [
           {
@@ -87,7 +91,7 @@
           {
             id: 'nv-desk-name-plate',
             name: 'Personalizirana pločica za radni stol',
-            description: 'Premium drvena pločica za radni stol s integriranim držačem za olovke. Izrađena od punog drveta s preciznom laserskom gravurom vašeg imena i titule.',
+            description: 'Premium drvena pločica za radni stol s integriranim držačem za olovke. Izrađena od punog drveta s preciznom laserskom gravurom vašeg imena i titule. Elegantan dodatak koji unosi profesionalizam u svaki ured.',
             price: '19,98 €',
             image: 'https://i.etsystatic.com/46489053/r/il/ca841c/7836047953/il_794xN.7836047953_270r.jpg',
             categories: ['Uredski dodaci'],
@@ -102,43 +106,93 @@
           {
             id: 'nv-welcome-decor',
             name: 'Personalizirani natpis dobrodošlice',
-            description: 'Prekrasan personalizirani natpis dobrodošlice koji svakom domu daje toplinu i karakter. Izrađen od biranog drveta s preciznim laserskim rezom.',
+            description: 'Prekrasan personalizirani natpis dobrodošlice koji svakom domu daje toplinu i karakter. Izrađen od biranog drveta s preciznim laserskim rezom i završnom obradom. Savršen poklon za useljenje ili vjenčanje.',
             price: '23,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/ac2412/6846190149/il_794xN.6846190149_mlxe.jpg',
             categories: ['Dekoracije za dom'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/ac2412/6846190149/il_794xN.6846190149_mlxe.jpg',
               'https://i.etsystatic.com/46489053/r/il/b9a5b7/6798186960/il_794xN.6798186960_f3tc.jpg',
-              'https://i.etsystatic.com/46489053/r/il/d00e20/6846190143/il_794xN.6846190143_47im.jpg'
+              'https://i.etsystatic.com/46489053/r/il/d00e20/6846190143/il_794xN.6846190143_47im.jpg',
+              'https://i.etsystatic.com/46489053/r/il/192a83/6846190147/il_794xN.6846190147_oopl.jpg'
             ],
             etsyUrl: 'https://www.etsy.com/de-en/listing/1904425975/personalized-home-decor-home-sweet-home'
           },
           {
             id: 'nv-key-organizer',
             name: 'Držač ključeva i pošte - Modern',
-            description: 'Elegantan zidni organizator koji spaja funkcionalnost i estetiku. Izrađen od vrhunskog drveta, sadrži utor za poštu i čvrste magnete za ključeve.',
+            description: 'Elegantan zidni organizator koji spaja funkcionalnost i estetiku. Izrađen od vrhunskog drveta, sadrži utor za poštu i čvrste magnete za ključeve. Minimalistički dizajn koji unosi red u vaš ulazni prostor.',
             price: 'od 24,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/05ce4c/5418174233/il_794xN.5418174233_a9zo.jpg',
             categories: ['Organizacija'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/05ce4c/5418174233/il_794xN.5418174233_a9zo.jpg',
               'https://i.etsystatic.com/46489053/r/il/07749f/5370006498/il_794xN.5370006498_b62a.jpg',
-              'https://i.etsystatic.com/46489053/r/il/0a4e70/5370006478/il_794xN.5370006478_mry9.jpg'
+              'https://i.etsystatic.com/46489053/r/il/0a4e70/5370006478/il_794xN.5370006478_mry9.jpg',
+              'https://i.etsystatic.com/46489053/r/il/20ce9f/5370006482/il_794xN.5370006482_oyiy.jpg',
+              'https://i.etsystatic.com/46489053/r/il/c43632/5370008864/il_794xN.5370008864_4s6g.jpg'
             ],
             etsyUrl: 'https://www.etsy.com/de-en/listing/1582519039/key-board-mail-organizer-entryway'
           },
           {
             id: 'nv-oak-cutting-board',
             name: 'Personalizirana daska za rezanje',
-            description: 'Daska za rezanje od vrhunskog hrasta. Izuzetno izdržljiva i jedinstvena, s mogućnošću personalizirane laserske gravure.',
+            description: 'Daska za rezanje od vrhunskog hrasta. Izuzetno izdržljiva i jedinstvena, s mogućnošću personalizirane laserske gravure. Savršen poklon za useljenje, vjenčanje ili kao poseban detalj u vašoj kuhinji.',
             price: 'od 29,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/32f296/6831720267/il_794xN.6831720267_gj03.jpg',
             categories: ['Kuhinja'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/32f296/6831720267/il_794xN.6831720267_gj03.jpg',
-              'https://i.etsystatic.com/46489053/r/il/a6cb89/6783711926/il_794xN.6783711926_ms7c.jpg'
+              'https://i.etsystatic.com/46489053/r/il/a6cb89/6783711926/il_794xN.6783711926_ms7c.jpg',
+              'https://i.etsystatic.com/46489053/r/il/881911/6831720265/il_794xN.6831720265_rsz9.jpg',
+              'https://i.etsystatic.com/46489053/r/il/9adaf6/6831721345/il_794xN.6831721345_ca6h.jpg'
             ],
             etsyUrl: 'https://www.etsy.com/de-en/listing/1887342412/personalized-cutting-board-oak-cutting'
+          },
+          {
+            id: 'nv-home-sweet-home-sign-new',
+            name: 'Personalizirani "Home Sweet Home" natpis',
+            description: 'Prekrasan personalizirani drveni natpis "Home Sweet Home". Izrađen od punog drveta s preciznom laserskom gravurom. Savršen detalj za vaš ulazni prostor ili dnevni boravak, te idealan poklon za useljenje ili vjenčanje.',
+            price: '19,95 €',
+            image: 'https://i.etsystatic.com/46489053/r/il/a03257/7836009191/il_794xN.7836009191_pami.jpg',
+            categories: ['Dekoracije za dom'],
+            images: [
+              'https://i.etsystatic.com/46489053/r/il/a03257/7836009191/il_794xN.7836009191_pami.jpg',
+              'https://i.etsystatic.com/46489053/r/il/879e84/7788078760/il_794xN.7788078760_4o4f.jpg',
+              'https://i.etsystatic.com/46489053/r/il/4c7a68/7788079314/il_794xN.7788079314_gw80.jpg',
+              'https://i.etsystatic.com/46489053/r/il/4e9f3d/7836006187/il_794xN.7836006187_bfi1.jpg'
+            ],
+            etsyUrl: 'https://www.etsy.com/de-en/listing/4469346727/personalized-home-sweet-home-wooden-sign'
+          },
+          {
+            id: 'nv-book-valet-personalized',
+            name: 'Personalizirani stalak za knjige (Book Valet)',
+            description: 'Elegantan i praktičan drveni stalak za knjige, idealan za vaš noćni ormarić. Sadrži poseban dio za odlaganje knjige, naočala i mobitela. Izrađen od vrhunskog drveta, ovaj stalak čuva vašu stranicu i organizira vaše večernje potrepštine.',
+            price: '24,98 €',
+            image: 'https://i.etsystatic.com/46489053/r/il/638ad8/7835970163/il_794xN.7835970163_gmrf.jpg',
+            categories: ['Dekoracije za dom', 'Organizacija'],
+            images: [
+              'https://i.etsystatic.com/46489053/r/il/638ad8/7835970163/il_794xN.7835970163_gmrf.jpg',
+              'https://i.etsystatic.com/46489053/r/il/906074/7835970095/il_794xN.7835970095_7lsf.jpg',
+              'https://i.etsystatic.com/46489053/r/il/19cd6c/7788039422/il_794xN.7788039422_k2b7.jpg',
+              'https://i.etsystatic.com/46489053/r/il/3d8824/7788042078/il_794xN.7788042078_e4cr.jpg'
+            ],
+            etsyUrl: 'https://www.etsy.com/de-en/listing/4469347504/personalized-wooden-book-valet'
+          },
+          {
+            id: 'nv-oak-cutting-board-v2',
+            name: 'Personalizirana daska za rezanje',
+            description: 'Vrhunska daska za rezanje izrađena od punog hrasta. Savršen spoj funkcionalnosti i estetike za vašu kuhinju, s mogućnošću personalizirane gravure po vašoj želji.',
+            price: 'od 29,95 €',
+            image: 'https://i.etsystatic.com/46489053/r/il/4cf376/6783666808/il_794xN.6783666808_bely.jpg',
+            categories: ['Kuhinja'],
+            images: [
+              'https://i.etsystatic.com/46489053/r/il/4cf376/6783666808/il_794xN.6783666808_bely.jpg',
+              'https://i.etsystatic.com/46489053/r/il/b1edfb/6783664620/il_794xN.6783664620_b73i.jpg',
+              'https://i.etsystatic.com/46489053/r/il/30ae0f/6783664628/il_794xN.6783664628_74l2.jpg',
+              'https://i.etsystatic.com/46489053/r/il/e3aefb/6783665962/il_794xN.6783665962_5k5w.jpg'
+            ],
+            etsyUrl: 'https://www.etsy.com/de-en/listing/1887339718/oak-cutting-board-personalized-cutting'
           },
           {
             id: 'nv-oak-photo-holders-set',
@@ -213,7 +267,7 @@
                 </button>
                 <div className="w-full md:w-1/2 bg-stone-50 flex flex-col">
                   <div className="relative flex-grow h-[300px] md:h-auto overflow-hidden">
-                    <img src={gallery[activeImageIndex]} className="w-full h-full object-cover" alt={selectedProduct.name} />
+                    <img src={gallery[activeImageIndex]} className="w-full h-full object-cover" alt={selectedProduct.name} referrerPolicy="no-referrer" />
                     {gallery.length > 1 && (
                       <div className="absolute inset-0 flex items-center justify-between px-4">
                         <button onClick={() => setActiveImageIndex(i => i === 0 ? gallery.length - 1 : i - 1)} className="p-2 bg-white/50 rounded-full shadow-sm hover:bg-white/80 transition-all">
@@ -225,16 +279,109 @@
                       </div>
                     )}
                   </div>
+                  {gallery.length > 1 && (
+                    <div className="p-4 flex gap-2 overflow-x-auto bg-stone-100/50 no-scrollbar">
+                      {gallery.map((img, idx) => (
+                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === idx ? 'border-amber-900' : 'border-transparent opacity-60'}`}>
+                          <img src={img} className="w-full h-full object-cover" alt={`${selectedProduct.name} gallery ${idx}`} referrerPolicy="no-referrer" />
+                        </button>
+                      ))}
+                    </div>
+                  )}
                 </div>
                 <div className="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto flex flex-col">
                   <div className="flex-grow">
-                    <h2 className="text-2xl md:text-4xl font-bold mb-3 text-stone-900">{selectedProduct.name}</h2>
-                    <p className="text-2xl md:text-3xl font-bold text-amber-950 mb-4">{selectedProduct.price}</p>
-                    <p className="text-stone-600 leading-relaxed text-sm md:text-base mb-6">{selectedProduct.description}</p>
+                    <div className="flex flex-wrap gap-2 mb-4">
+                      {selectedProduct.categories.map((cat, idx) => (
+                        <span key={idx} className="px-3 py-1 bg-stone-100 text-stone-500 rounded-full text-[10px] md:text-xs font-bold uppercase inline-block">{cat}</span>
+                      ))}
+                    </div>
+                    <h2 className="text-2xl md:text-4xl font-bold mb-3 md:mb-4 text-stone-900">{selectedProduct.name}</h2>
+                    <p className="text-2xl md:text-3xl font-bold text-amber-950 mb-4 md:mb-6">{selectedProduct.price}</p>
+                    <div className="mb-6 md:mb-8">
+                      <h4 className="text-xs font-bold uppercase tracking-wider text-stone-400 mb-2">O proizvodu</h4>
+                      <p className="text-stone-600 leading-relaxed text-sm md:text-base">{selectedProduct.description}</p>
+                    </div>
                   </div>
-                  <a href={selectedProduct.etsyUrl || "#"} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-amber-950 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg hover:bg-amber-900 transition-all">
-                    Kupi na Etsy-u <ExternalLink size={20} />
-                  </a>
+                  <div className="space-y-4">
+                    <a href={selectedProduct.etsyUrl || "https://www.etsy.com/shop/novaventuri/"} target="_blank" rel="noopener noreferrer" className="w-full py-4 bg-amber-950 text-white rounded-xl font-bold text-lg flex items-center justify-center gap-2 shadow-lg shadow-amber-950/20 hover:bg-amber-900 transition-all">
+                      Kupi na Etsy-u <ExternalLink size={20} />
+                    </a>
+                    <p className="text-center text-[10px] md:text-xs text-stone-400 italic">*Svi naši proizvodi su unikatni. Drvo može varirati u nijansi i teksturi.</p>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        };
+
+        const ImpressumModal = ({ isImpressumOpen, setIsImpressumOpen, showImpressumDetails, setShowImpressumDetails }) => {
+          if (!isImpressumOpen) return null;
+          return (
+            <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 animate-fade-in">
+              <div className="absolute inset-0 bg-stone-900/90 backdrop-blur-md" onClick={() => setIsImpressumOpen(false)}></div>
+              <motion.div 
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="relative bg-white w-full max-w-lg rounded-3xl overflow-hidden shadow-2xl p-8 md:p-12"
+              >
+                <button onClick={() => setIsImpressumOpen(false)} className="absolute top-4 right-4 p-2 hover:bg-stone-100 rounded-full transition-colors">
+                  <X size={24} />
+                </button>
+                <h2 className="text-3xl font-bold mb-8 text-stone-900">Impressum</h2>
+                <div className="space-y-6 text-stone-600">
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Vlasnik</p>
+                    <p className="text-lg font-medium text-stone-900">Smail Pajalic</p>
+                  </div>
+                  <div>
+                    <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Email</p>
+                    <p className="text-lg font-medium text-stone-900">info@novaventuri.com</p>
+                  </div>
+                  <div className="pt-4 border-t border-stone-100">
+                    {!showImpressumDetails ? (
+                      <button onClick={() => setShowImpressumDetails(true)} className="w-full py-4 bg-amber-900/10 text-amber-900 rounded-xl font-bold hover:bg-amber-900/20 transition-all">Prikaži podatke / Details anzeigen</button>
+                    ) : (
+                      <div className="space-y-6 animate-fade-in">
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Adresa</p>
+                          <p className="text-lg font-medium text-stone-900">Glockenblumenstr. 46, 70563, Stuttgart</p>
+                        </div>
+                        <div>
+                          <p className="text-xs font-bold uppercase tracking-widest text-stone-400 mb-1">Telefon</p>
+                          <p className="text-lg font-medium text-stone-900">+49 178 4156300</p>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          );
+        };
+
+        const DatenschutzModal = ({ isDatenschutzOpen, setIsDatenschutzOpen }) => {
+          if (!isDatenschutzOpen) return null;
+          return (
+            <div className="fixed inset-0 z-[110] flex items-center justify-center p-4 animate-fade-in">
+              <div className="absolute inset-0 bg-stone-900/90 backdrop-blur-md" onClick={() => setIsDatenschutzOpen(false)}></div>
+              <motion.div 
+                initial={{ scale: 0.95, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                className="relative bg-white w-full max-w-2xl max-h-[80vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col"
+              >
+                <div className="p-6 border-b border-stone-100 flex items-center justify-between">
+                  <h2 className="text-2xl font-bold text-stone-900">Datenschutzerklärung</h2>
+                  <button onClick={() => setIsDatenschutzOpen(false)} className="p-2 hover:bg-stone-100 rounded-full transition-colors">
+                    <X size={24} />
+                  </button>
+                </div>
+                <div className="p-8 md:p-12 overflow-y-auto text-stone-600 text-sm leading-relaxed space-y-6">
+                  <div><h4 className="font-bold text-stone-900 mb-2">1. Datenschutz na einen Blick</h4><p>Die Nutzung dieser Website ist in der Regel ohne Angabe personenbezogener Daten möglich. Soweit na unseren Seiten personenbezogene Daten (beispielsweise Name, Anschrift oder E-Mail-Adressen im Kontaktformular) erhoben werden, erfolgt dies na freiwilliger Basis.</p></div>
+                  <div><h4 className="font-bold text-stone-900 mb-2">2. Datenerfassung na našoj web stranici</h4><p>Kontaktformular: Wenn Sie uns per Kontaktformular Anfragen zukommen lassen, werden Ihre Angaben aus dem Anfrageformular inklusive der von Ihnen dort angegebenen Kontaktdaten zwecks Bearbeitung der Anfrage und für den Fall von Anschlussfragen bei uns gespeichert. Diese Daten geben wir nicht ohne Ihre Einwilligung weiter. Die Verarbeitung dieser Daten erfolgt na Grundlage von Art. 6 Abs. 1 lit. b DSGVO.</p></div>
+                  <div><h4 className="font-bold text-stone-900 mb-2">3. Externe Links (Etsy)</h4><p>Unsere Website enthält Links zum Onlineshop "Etsy". Wenn Sie diese Links anklicken, verlassen Sie unsere Website. Bitte beachten Sie, dass für die Nutzung von Etsy die Datenschutzbestimmungen der Etsy Ireland UC gelten. Wir haben keinen Einfluss na die Datenerhebung und deren weitere Verwendung durch Etsy.</p></div>
+                  <div><h4 className="font-bold text-stone-900 mb-2">4. Ihre Rechte</h4><p>Sie haben jederzeit das Recht, unentgeltlich Auskunft über Herkunft, Empfänger und Zweck Ihrer gespeicherten personenbezogenen Daten zu erhalten. Sie haben außerdem ein Recht, die Berichtigung, Sperrung oder Löschung dieser Daten zu verlangen. Hierzu sowie zu weiteren Fragen zum Thema Datenschutz können Sie sich jederzeit unter der im Impressum angegebenen Adresse an uns wenden.</p></div>
+                  <div><h4 className="font-bold text-stone-900 mb-2">5. Analyse-Tools und Cookies</h4><p>Diese Website verwendet keine Cookies und keine Analyse-Tools (wie Google Analytics), um Ihr Nutzerverhalten nachzuverfolgen.</p></div>
                 </div>
               </motion.div>
             </div>
@@ -247,6 +394,9 @@
           const [selectedProduct, setSelectedProduct] = useState(null);
           const [activeImageIndex, setActiveImageIndex] = useState(0);
           const [isMenuOpen, setIsMenuOpen] = useState(false);
+          const [isImpressumOpen, setIsImpressumOpen] = useState(false);
+          const [isDatenschutzOpen, setIsDatenschutzOpen] = useState(false);
+          const [showImpressumDetails, setShowImpressumDetails] = useState(false);
 
           const categories = ['Sve', ...Array.from(new Set(PRODUCTS.flatMap(p => p.categories)))];
           const filteredProducts = activeCategory === 'Sve' ? PRODUCTS : PRODUCTS.filter(p => p.categories.includes(activeCategory));
@@ -259,12 +409,24 @@
           };
 
           return (
-            <div className="min-h-screen flex flex-col animate-fade-in">
+            <div className="min-h-screen flex flex-col animate-fade-in bg-stone-50">
               <ProductModal 
                 selectedProduct={selectedProduct} 
                 activeImageIndex={activeImageIndex} 
                 setActiveImageIndex={setActiveImageIndex} 
                 closeModal={() => setSelectedProduct(null)} 
+              />
+
+              <ImpressumModal 
+                isImpressumOpen={isImpressumOpen} 
+                setIsImpressumOpen={setIsImpressumOpen} 
+                showImpressumDetails={showImpressumDetails} 
+                setShowImpressumDetails={setShowImpressumDetails} 
+              />
+
+              <DatenschutzModal 
+                isDatenschutzOpen={isDatenschutzOpen} 
+                setIsDatenschutzOpen={setIsDatenschutzOpen} 
               />
               
               <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
@@ -319,12 +481,28 @@
                 </main>
               ) : (
                 <main className="pt-32 pb-20 px-6 container mx-auto">
-                  <h1 className="text-3xl md:text-5xl font-bold mb-12">Naša Kolekcija</h1>
+                  <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
+                    <div>
+                      <h1 className="text-3xl md:text-5xl font-bold mb-4">Naša Kolekcija</h1>
+                      <p className="text-stone-500 max-w-lg">Pregledajte našu ponudu unikatnih drvenih proizvoda. Svaki komad je pažljivo dizajniran i izrađen.</p>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {categories.map(cat => (
+                        <button 
+                          key={cat} 
+                          onClick={() => setActiveCategory(cat)}
+                          className={`px-4 py-2 rounded-full text-sm font-bold transition-all ${activeCategory === cat ? 'bg-amber-950 text-white shadow-md' : 'bg-white text-stone-600 hover:bg-stone-100 border border-stone-200'}`}
+                        >
+                          {cat}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                     {filteredProducts.map(p => (
                       <div key={p.id} onClick={() => setSelectedProduct(p)} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl transition-all cursor-pointer">
                         <div className="h-64 overflow-hidden">
-                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} />
+                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" alt={p.name} referrerPolicy="no-referrer" />
                         </div>
                         <div className="p-6">
                           <h3 className="text-xl font-bold mb-2">{p.name}</h3>
@@ -336,13 +514,30 @@
                 </main>
               )}
 
-              <footer className="bg-stone-900 text-stone-400 py-12 px-6 mt-auto">
-                <div className="container mx-auto text-center">
-                  <div className="flex items-center justify-center gap-2 mb-4">
-                    <Logo className="w-6 h-6" dark={false} />
-                    <span className="text-lg font-bold text-white tracking-widest uppercase">NOVA VENTURI</span>
+              <footer className="bg-stone-900 text-stone-400 py-16 px-6 mt-auto">
+                <div className="container mx-auto">
+                  <div className="flex flex-col md:flex-row justify-between items-center gap-12 mb-12">
+                    <div className="flex flex-col items-center md:items-start gap-4">
+                      <div className="flex items-center gap-2">
+                        <Logo className="w-8 h-8" dark={false} />
+                        <span className="text-xl font-bold text-white tracking-widest uppercase">NOVA VENTURI</span>
+                      </div>
+                      <p className="text-stone-500 max-w-xs text-center md:text-left">Unikatni drveni detalji koji spajaju modernu tehnologiju i tradiciju.</p>
+                    </div>
+                    <div className="flex flex-col items-center md:items-end gap-6">
+                      <div className="flex gap-8 font-bold text-white">
+                        <button onClick={() => navigateTo('collection')} className="hover:text-amber-400 transition-colors">Kolekcija</button>
+                        <a href="https://www.etsy.com/shop/novaventuri/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-400 transition-colors">Etsy Shop</a>
+                      </div>
+                      <div className="flex gap-6 text-sm">
+                        <button onClick={() => setIsImpressumOpen(true)} className="hover:text-white transition-colors">Impressum</button>
+                        <button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-white transition-colors">Datenschutz</button>
+                      </div>
+                    </div>
                   </div>
-                  <p>© 2024 Nova Venturi Woodworking. Sva prava pridržana.</p>
+                  <div className="pt-8 border-t border-stone-800 text-center text-sm text-stone-600">
+                    <p>© 2024 Nova Venturi Woodworking. Sva prava pridržana.</p>
+                  </div>
                 </div>
               </footer>
 
@@ -353,8 +548,9 @@
                     <button onClick={() => setIsMenuOpen(false)}><X size={32} /></button>
                   </div>
                   <div className="flex flex-col gap-8 text-2xl font-bold">
+                    <button onClick={() => navigateTo('home')}>Početna</button>
                     <button onClick={() => navigateTo('collection')}>Kolekcija</button>
-                    <a href="https://www.etsy.com/shop/novaventuri/">Etsy Trgovina</a>
+                    <a href="https://www.etsy.com/shop/novaventuri/" target="_blank" rel="noopener noreferrer">Etsy Trgovina</a>
                   </div>
                 </div>
               )}
