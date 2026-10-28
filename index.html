@@ -101,11 +101,11 @@
     <div id="error-display"></div>
 
     <script type="text/babel" data-type="module">
-        import React, { useState, useEffect } from 'https://esm.sh/react@18';
+        import React, { useState, useEffect, useRef } from 'https://esm.sh/react@18';
         import { createRoot } from 'https://esm.sh/react-dom@18/client';
         import { 
-          X, ChevronLeft, ChevronRight, ExternalLink, ArrowLeft, ArrowRight, 
-          Filter, Menu, Instagram, Facebook, Mail, MessageSquare, ShoppingBag, CheckCircle2, MessageCircle 
+          X, ChevronLeft, ChevronRight, ChevronDown, ExternalLink, ArrowLeft, ArrowRight, 
+          Menu, Instagram, Facebook, Mail, MessageSquare, ShoppingBag, CheckCircle2, MessageCircle 
         } from 'https://esm.sh/lucide-react@0.460.0?deps=react@18';
         import { motion, AnimatePresence } from 'https://esm.sh/framer-motion@11.11.11?deps=react@18,react-dom@18';
 
@@ -146,7 +146,7 @@
             description: 'Prekrasan personalizirani natpis dobrodošlice koji svakom domu daje toplinu i karakter. Izrađen od biranog drveta s preciznim laserskim rezom i završnom obradom. Savršen poklon za useljenje ili vjenčanje.',
             price: '23,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/ac2412/6846190149/il_794xN.6846190149_mlxe.jpg',
-            categories: ['Dekoracije za dom'],
+            categories: ['Dekoracije'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/ac2412/6846190149/il_794xN.6846190149_mlxe.jpg',
               'https://i.etsystatic.com/46489053/r/il/b9a5b7/6798186960/il_794xN.6798186960_f3tc.jpg',
@@ -173,7 +173,7 @@
           },
           {
             id: 'nv-oak-cutting-board',
-            name: 'Personalizirana daska za rezanje',
+            name: 'Personalizirana daska za rezanje (Hrast)',
             description: 'Daska za rezanje od vrhunskog hrasta. Izuzetno izdržljiva i jedinstvena, s mogućnošću personalizirane laserske gravure. Savršen poklon za useljenje, vjenčanje ili kao poseban detalj u vašoj kuhinji.',
             price: 'od 29,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/32f296/6831720267/il_794xN.6831720267_gj03.jpg',
@@ -192,7 +192,7 @@
             description: 'Prekrasan personalizirani drveni natpis "Home Sweet Home". Izrađen od punog drveta s preciznom laserskom gravurom. Savršen detalj za vaš ulazni prostor ili dnevni boravak, te idealan poklon za useljenje ili vjenčanje.',
             price: '19,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/a03257/7836009191/il_794xN.7836009191_pami.jpg',
-            categories: ['Dekoracije za dom'],
+            categories: ['Dekoracije'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/a03257/7836009191/il_794xN.7836009191_pami.jpg',
               'https://i.etsystatic.com/46489053/r/il/879e84/7788078760/il_794xN.7788078760_4o4f.jpg',
@@ -207,7 +207,7 @@
             description: 'Elegantan i praktičan drveni stalak za knjige, idealan za vaš noćni ormarić. Sadrži poseban dio za odlaganje knjige, naočala i mobitela. Izrađen od vrhunskog drveta, ovaj stalak čuva vašu stranicu i organizira vaše večernje potrepštine.',
             price: '24,98 €',
             image: 'https://i.etsystatic.com/46489053/r/il/638ad8/7835970163/il_794xN.7835970163_gmrf.jpg',
-            categories: ['Dekoracije za dom', 'Organizacija'],
+            categories: ['Dekoracije', 'Organizacija'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/638ad8/7835970163/il_794xN.7835970163_gmrf.jpg',
               'https://i.etsystatic.com/46489053/r/il/906074/7835970095/il_794xN.7835970095_7lsf.jpg',
@@ -218,7 +218,7 @@
           },
           {
             id: 'nv-oak-cutting-board-v2',
-            name: 'Personalizirana daska za rezanje',
+            name: 'Personalizirana daska za rezanje (Classic)',
             description: 'Vrhunska daska za rezanje izrađena od punog hrasta. Savršen spoj funkcionalnosti i estetike za vašu kuhinju, s mogućnošću personalizirane gravure po vašoj želji.',
             price: 'od 29,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/4cf376/6783666808/il_794xN.6783666808_bely.jpg',
@@ -237,7 +237,7 @@
             description: 'Set od tri ručno izrađena držača za fotografije od punog hrasta. Minimalistički dizajn koji se savršeno uklapa u svaki moderni interijer ili ured. Idealno za izlaganje vaših najdražih uspomena, posjetnica ili malih umjetničkih djela.',
             price: '9,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/30e883/7835723492/il_794xN.7835723492_gfda.jpg',
-            categories: ['Uredski dodaci', 'Dekoracije za dom'],
+            categories: ['Uredski dodaci', 'Dekoracije'],
             images: [
               'https://i.etsystatic.com/46489053/r/il/30e883/7835723492/il_794xN.7835723492_gfda.jpg',
               'https://i.etsystatic.com/46489053/r/il/b12001/7835720168/il_794xN.7835720168_fv74.jpg',
@@ -248,7 +248,7 @@
           },
           {
             id: 'nv-personalized-oak-cutting-board',
-            name: 'Personalizirana daska za rezanje',
+            name: 'Personalizirana daska za rezanje (Rustik)',
             description: 'Ručno izrađena daska za rezanje od punog hrasta s mogućnošću personalizacije. Savršen poklon za vjenčanja, useljenja ili ljubitelje kuhanja. Izdržljiva, prirodna i elegantna.',
             price: 'od 19,95 €',
             image: 'https://i.etsystatic.com/46489053/r/il/1a7717/7819786632/il_794xN.7819786632_av6i.jpg',
@@ -278,31 +278,47 @@
           }
         ];
 
-        const FEATURED_COLLECTIONS = [
+        const CATEGORIES_DATA = [
           {
             id: 'kuhinja',
             name: 'Kuhinja',
-            category: 'Kuhinja',
-            badge: 'Kuhinjski dodaci',
-            description: 'Ručno rađene daske za rezanje, podmetači i kulinarski dodaci od punog drveta s mogućnošću personalizirane laserske gravure.',
-            image: 'https://i.etsystatic.com/46489053/r/il/32f296/6831720267/il_794xN.6831720267_gj03.jpg'
+            subtitle: 'Kuhinjski detalji & daske',
+            description: 'Ručno izrađene daske od biranog punog hrasta s mogućnošću personalizirane laserske gravure.',
+            categoryKey: 'Kuhinja',
+            count: PRODUCTS.filter(p => p.categories.includes('Kuhinja')).length
           },
           {
-            id: 'ured',
+            id: 'uredski-dodaci',
             name: 'Uredski dodaci',
-            category: 'Uredski dodaci',
-            badge: 'Radni prostor',
-            description: 'Minimalistički stalci za mobitele, wrist rest podloške i držači fotografija koji unose ergonomiju i toplinu drveta na radni stol.',
-            image: 'https://i.etsystatic.com/46489053/r/il/117ba3/7835741164/il_794xN.7835741164_pe2t.jpg'
+            subtitle: 'Ergonomija & radni prostor',
+            description: 'Minimalistički wrist rest oslonci, drveni stalci za mobitele, gravirane pločice i držači fotografija.',
+            categoryKey: 'Uredski dodaci',
+            count: PRODUCTS.filter(p => p.categories.includes('Uredski dodaci')).length
           },
           {
-            id: 'ukrasi',
-            name: 'Ukrasi i Dom',
-            category: 'Dekoracije za dom',
-            badge: 'Dekoracije & Dom',
-            description: 'Personalizirani drveni natpisi, Book Valet stalci za knjige i unikatni detalji koji svaki kutak vašeg doma čine toplim i posebnim.',
-            image: 'https://i.etsystatic.com/46489053/r/il/638ad8/7835970163/il_794xN.7835970163_gmrf.jpg'
+            id: 'dekoracije',
+            name: 'Dekoracije',
+            subtitle: 'Topli drveni ukrasi za dom',
+            description: 'Personalizirani natpisi dobrodošlice, Home Sweet Home dekoracije i Book Valet noćni stalci.',
+            categoryKey: 'Dekoracije',
+            count: PRODUCTS.filter(p => p.categories.includes('Dekoracije')).length
+          },
+          {
+            id: 'organizacija',
+            name: 'Organizacija',
+            subtitle: 'Zidni i stolni organizatori',
+            description: 'Zidni organizatori s utorom za poštu i snažnim magnetima za ključeve te višenamjenski stalci.',
+            categoryKey: 'Organizacija',
+            count: PRODUCTS.filter(p => p.categories.includes('Organizacija')).length
           }
+        ];
+
+        // Best Seller lista najpopularnijih proizvoda (3-5 proizvoda s više slika)
+        const BEST_SELLERS = [
+          PRODUCTS.find(p => p.id === 'nv-wrist-rest-collection') || PRODUCTS[0],
+          PRODUCTS.find(p => p.id === 'nv-desk-name-plate') || PRODUCTS[1],
+          PRODUCTS.find(p => p.id === 'nv-oak-cutting-board') || PRODUCTS[4],
+          PRODUCTS.find(p => p.id === 'nv-book-valet-personalized') || PRODUCTS[5],
         ];
 
         const Logo = ({ className = "w-10 h-10", dark = true }) => (
@@ -314,6 +330,257 @@
             </svg>
           </div>
         );
+
+        // Automatski foto-slajder kartica za Best Seller proizvod (automatska rotacija slika svakih 3 s)
+        const BestSellerCard = ({ product, index, onOpen }) => {
+          const images = (product.images && product.images.length > 0) ? product.images : [product.image];
+          const [currentIndex, setCurrentIndex] = useState(0);
+
+          useEffect(() => {
+            if (images.length <= 1) return;
+            const interval = setInterval(() => {
+              setCurrentIndex(prev => (prev + 1) % images.length);
+            }, 3000);
+            return () => clearInterval(interval);
+          }, [images]);
+
+          return (
+            <div 
+              onClick={() => onOpen(product)}
+              className="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm hover:shadow-xl border border-stone-200/90 transition-all duration-300 cursor-pointer flex flex-col h-full hover:-translate-y-1 relative select-none"
+            >
+              {/* Glatki foto-slajder koji automatski mijenja slike na svakih 3 sekunde */}
+              <div className="relative h-52 xs:h-60 sm:h-72 md:h-80 w-full overflow-hidden bg-stone-900">
+                {images.map((imgSrc, idx) => (
+                  <img
+                    key={idx}
+                    src={imgSrc}
+                    alt={`${product.name} - fotografija ${idx + 1}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+                      idx === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
+                    referrerPolicy="no-referrer"
+                    loading="lazy"
+                  />
+                ))}
+
+                {/* Gradijent preko donjeg dijela slike za isticanje točkica */}
+                <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-stone-950/70 via-stone-950/20 to-transparent pointer-events-none" />
+
+                {/* Best Seller Oznaka */}
+                <div className="absolute top-3 left-3 sm:top-4 sm:left-4 z-10 flex items-center gap-1 sm:gap-1.5 px-2.5 py-1 sm:px-3.5 sm:py-1.5 rounded-full bg-amber-950/90 text-amber-200 shadow-md font-bold text-[10px] sm:text-xs uppercase tracking-wider backdrop-blur-sm border border-amber-900/40">
+                  <span className="text-amber-400">★</span>
+                  <span>Best Seller</span>
+                </div>
+
+                {/* Broj slika oznaka */}
+                {images.length > 1 && (
+                  <div className="absolute top-3 right-3 sm:top-4 sm:right-4 z-10 px-2 py-0.5 sm:px-2.5 sm:py-1 rounded-full bg-black/60 backdrop-blur-md text-white text-[10px] sm:text-[11px] font-bold shadow-sm">
+                    {currentIndex + 1}/{images.length}
+                  </div>
+                )}
+
+                {/* Indikator slajdova (Dots) na dnu slike */}
+                {images.length > 1 && (
+                  <div className="absolute bottom-2.5 inset-x-0 flex items-center justify-center gap-1.5 z-10">
+                    {images.map((_, idx) => (
+                      <span
+                        key={idx}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          idx === currentIndex 
+                            ? 'w-5 sm:w-6 bg-white shadow-sm' 
+                            : 'w-1.5 bg-white/40'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Sadržaj kartice */}
+              <div className="p-4 sm:p-6 md:p-7 flex flex-col flex-grow justify-between bg-white">
+                <div>
+                  <div className="flex items-center justify-between gap-2 mb-2">
+                    <span className="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-900 bg-amber-50 px-2.5 py-0.5 sm:py-1 rounded-full">
+                      {product.categories?.[0] || 'Ručni rad'}
+                    </span>
+                    <span className="text-[11px] sm:text-xs text-stone-400 font-medium">#{index + 1} Najprodavanije</span>
+                  </div>
+                  
+                  <h3 className="text-base sm:text-xl font-bold text-stone-900 mb-1 sm:mb-2 group-hover:text-amber-900 transition-colors line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-stone-500 text-xs sm:text-sm leading-relaxed mb-4 sm:mb-6 line-clamp-2">
+                    {product.description}
+                  </p>
+                </div>
+
+                <div className="flex items-center justify-between pt-3 sm:pt-4 border-t border-stone-100">
+                  <div>
+                    <span className="block text-[9px] sm:text-[10px] uppercase font-bold text-stone-400 tracking-wider">Cijena</span>
+                    <span className="text-lg sm:text-2xl font-bold text-stone-900">{product.price}</span>
+                  </div>
+                  <span className="inline-flex items-center gap-1.5 px-3 py-1.5 sm:px-3.5 sm:py-2 rounded-xl bg-stone-100 text-amber-950 font-bold text-xs group-hover:bg-amber-950 group-hover:text-white transition-all shadow-sm">
+                    <span>Naruči</span>
+                    <ArrowRight size={14} className="group-hover:translate-x-0.5 transition-transform" />
+                  </span>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // Velika elegantna kartica kategorije sa automatskim foto-slajderom (svake 3 sec) - Mobile First
+        const CategoryCard = ({ category, onSelect }) => {
+          const categoryProducts = PRODUCTS.filter(p => p.categories.includes(category.categoryKey));
+          const images = categoryProducts.map(p => ({
+            url: p.image,
+            productName: p.name,
+            price: p.price
+          }));
+
+          const [currentIndex, setCurrentIndex] = useState(0);
+
+          useEffect(() => {
+            if (images.length <= 1) return;
+            const interval = setInterval(() => {
+              setCurrentIndex(prev => (prev + 1) % images.length);
+            }, 3000);
+            return () => clearInterval(interval);
+          }, [images.length]);
+
+          return (
+            <div
+              onClick={() => onSelect(category.categoryKey)}
+              className="group relative h-80 sm:h-96 md:h-[420px] w-full rounded-3xl overflow-hidden shadow-md hover:shadow-2xl border border-stone-200/80 transition-all duration-500 cursor-pointer flex flex-col justify-end select-none hover:-translate-y-1"
+            >
+              {/* Automatski foto-slajder koji na svakih 3 sekunde smjenjuje početne slike proizvoda s glatkim fade prijelazom */}
+              <div className="absolute inset-0 bg-stone-900">
+                {images.map((img, idx) => (
+                  <img
+                    key={idx}
+                    src={img.url}
+                    alt={`${category.name} - ${img.productName}`}
+                    className={`absolute inset-0 w-full h-full object-cover transition-all duration-700 ease-in-out group-hover:scale-105 ${
+                      idx === currentIndex ? 'opacity-100 scale-100' : 'opacity-0 scale-105 pointer-events-none'
+                    }`}
+                    loading="lazy"
+                    referrerPolicy="no-referrer"
+                  />
+                ))}
+              </div>
+
+              {/* Elegantan tamni sloj (gradient) preko donjeg dijela slike za maksimalnu čitljivost */}
+              <div className="absolute inset-0 bg-gradient-to-t from-stone-950/95 via-stone-950/50 to-transparent pointer-events-none" />
+
+              {/* Bedž s brojem proizvoda i indikator slajdera na vrhu */}
+              <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10 pointer-events-none">
+                <span className="bg-stone-900/60 backdrop-blur-md text-amber-200 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10 shadow-sm">
+                  {category.count} {category.count === 1 ? 'proizvod' : 'proizvoda'}
+                </span>
+
+                {images.length > 1 && (
+                  <div className="flex items-center gap-1.5 bg-black/50 backdrop-blur-md px-2.5 py-1.5 rounded-full border border-white/10">
+                    {images.map((_, dotIdx) => (
+                      <span
+                        key={dotIdx}
+                        className={`h-1.5 rounded-full transition-all duration-500 ${
+                          dotIdx === currentIndex ? 'w-5 bg-amber-400' : 'w-1.5 bg-white/40'
+                        }`}
+                      />
+                    ))}
+                  </div>
+                )}
+              </div>
+
+              {/* Tekst i interakcija: Veliki jasni naziv kategorije i kratko dugme 'Pogledaj sve' */}
+              <div className="relative z-10 p-6 sm:p-8 md:p-10 flex flex-col sm:flex-row sm:items-end justify-between gap-4">
+                <div className="max-w-xl">
+                  <span className="text-amber-400 font-bold uppercase tracking-widest text-[11px] sm:text-xs block mb-1">
+                    Kategorija • Drveni detalji
+                  </span>
+                  <h3 className="text-2xl sm:text-4xl font-bold text-white tracking-tight leading-tight mb-2">
+                    {category.name}
+                  </h3>
+                  <p className="text-stone-300 text-xs sm:text-sm line-clamp-2 leading-relaxed">
+                    {category.description}
+                  </p>
+                  {images[currentIndex] && (
+                    <p className="text-amber-200/80 text-[11px] sm:text-xs mt-2 font-medium">
+                      Na slici: {images[currentIndex].productName}
+                    </p>
+                  )}
+                </div>
+
+                <div className="flex-shrink-0">
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onSelect(category.categoryKey);
+                    }}
+                    className="w-full sm:w-auto px-6 py-3.5 bg-white hover:bg-amber-50 text-stone-950 rounded-2xl font-bold text-sm flex items-center justify-center gap-2 shadow-xl group-hover:scale-105 active:scale-95 transition-all cursor-pointer"
+                  >
+                    <span>Pogledaj sve</span>
+                    <ArrowRight size={16} className="text-amber-950 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        };
+
+        // Kartica proizvoda za prikaz unutar Kompletne Kolekcije
+        const ProductCard = ({ product, onOpen }) => {
+          return (
+            <div 
+              onClick={() => onOpen(product)}
+              className="group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer hover:-translate-y-1"
+            >
+              <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
+                <img 
+                  src={product.image} 
+                  alt={product.name}
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  loading="lazy"
+                  referrerPolicy="no-referrer"
+                />
+                <div className="absolute top-3 left-3 flex flex-wrap gap-1">
+                  {product.categories.map((cat, i) => (
+                    <span key={i} className="bg-white/90 backdrop-blur-md text-stone-800 text-[11px] font-semibold px-2.5 py-1 rounded-full shadow-sm">
+                      {cat}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="p-5 flex-grow flex flex-col justify-between">
+                <div>
+                  <h3 className="font-bold text-stone-900 text-base md:text-lg mb-1.5 group-hover:text-amber-900 transition-colors line-clamp-1">
+                    {product.name}
+                  </h3>
+                  <p className="text-stone-500 text-xs sm:text-sm line-clamp-2 leading-relaxed mb-4">
+                    {product.description}
+                  </p>
+                </div>
+                <div className="pt-3 border-t border-stone-100 flex items-center justify-between mt-auto">
+                  <div>
+                    <span className="text-[10px] uppercase font-bold text-stone-400 block tracking-wider">Cijena</span>
+                    <span className="text-base font-bold text-amber-950">{product.price}</span>
+                  </div>
+                  <button 
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      onOpen(product);
+                    }}
+                    className="px-3.5 py-2 bg-[#25D366] hover:bg-[#20bd5a] text-white rounded-xl text-xs font-bold transition-all flex items-center gap-1.5 cursor-pointer shadow-sm active:scale-95"
+                  >
+                    <MessageCircle size={14} className="fill-current" />
+                    <span>Naruči</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+          );
+        };
 
         const ProductModal = ({ selectedProduct, activeImageIndex, setActiveImageIndex, closeModal }) => {
           if (!selectedProduct) return null;
@@ -368,7 +635,6 @@
                     </div>
                   </div>
                   <div className="space-y-4 pt-2">
-                    {/* Glavno dugme - WhatsApp */}
                     <a 
                       href={`https://wa.me/491784156300?text=Pozdrav,%20zanima%20me%20proizvod:%20${encodeURIComponent(selectedProduct.name)}`}
                       target="_blank" 
@@ -379,7 +645,6 @@
                       <span>Naruči putem WhatsAppa</span>
                     </a>
 
-                    {/* Sporedna dugmad - Instagram & Email */}
                     <div className="grid grid-cols-2 gap-3">
                       <a 
                         href="https://www.instagram.com/nova.venturi/" 
@@ -481,8 +746,9 @@
         };
 
         function App() {
-          const [view, setView] = useState('home');
-          const [activeCategory, setActiveCategory] = useState('Sve');
+          const [currentPage, setCurrentPage] = useState('home');
+          const [selectedCategory, setSelectedCategory] = useState(null);
+          const [isMenuCollectionExpanded, setIsMenuCollectionExpanded] = useState(true);
           const [selectedProduct, setSelectedProduct] = useState(null);
           const [activeImageIndex, setActiveImageIndex] = useState(0);
           const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -496,42 +762,27 @@
           const [contactMessage, setContactMessage] = useState('');
           const [contactSubmitted, setContactSubmitted] = useState(false);
 
-          const categories = ['Sve', ...Array.from(new Set(PRODUCTS.flatMap(p => p.categories)))];
-
+          // Sinkronizacija sa URL hash-om (omogućuje browser back/forward i direktne linkove)
           useEffect(() => {
-            window.scrollTo(0, 0);
-          }, [view]);
-
-          const filteredProducts = activeCategory === 'Sve' ? PRODUCTS : PRODUCTS.filter(p => p.categories.includes(activeCategory));
-
-          const navigateTo = (v, category = 'Sve') => {
-            setView(v);
-            setActiveCategory(category);
-            setIsMenuOpen(false);
-          };
-
-          const scrollToContact = (e) => {
-            if (e) e.preventDefault();
-            if (view !== 'home') {
-              setView('home');
-              setTimeout(() => {
-                const el = document.getElementById('kontakt');
-                if (el) {
-                  el.scrollIntoView({ behavior: 'smooth' });
-                  const emailInput = document.getElementById('contact-email');
-                  if (emailInput) emailInput.focus();
+            const handleHash = () => {
+              const hash = window.location.hash;
+              if (hash.startsWith('#kolekcija')) {
+                setCurrentPage('kolekcija');
+                const parts = hash.split('/');
+                if (parts[1]) {
+                  const cat = CATEGORIES_DATA.find(c => c.id === parts[1] || c.categoryKey.toLowerCase() === decodeURIComponent(parts[1]).toLowerCase());
+                  if (cat) {
+                    setSelectedCategory(cat.categoryKey);
+                  }
                 }
-              }, 150);
-            } else {
-              const el = document.getElementById('kontakt');
-              if (el) {
-                el.scrollIntoView({ behavior: 'smooth' });
-                const emailInput = document.getElementById('contact-email');
-                if (emailInput) emailInput.focus();
+              } else {
+                setCurrentPage('home');
               }
-            }
-            setIsMenuOpen(false);
-          };
+            };
+            handleHash();
+            window.addEventListener('hashchange', handleHash);
+            return () => window.removeEventListener('hashchange', handleHash);
+          }, []);
 
           const handleContactSubmit = (e) => {
             e.preventDefault();
@@ -547,124 +798,76 @@
             document.body.style.overflow = 'hidden';
           };
 
+          const bestsellerScrollRef = useRef(null);
+
+          const scrollBestseller = (direction) => {
+            if (bestsellerScrollRef.current) {
+              const scrollAmount = Math.min(bestsellerScrollRef.current.clientWidth * 0.8, 320);
+              bestsellerScrollRef.current.scrollBy({
+                left: direction === 'left' ? -scrollAmount : scrollAmount,
+                behavior: 'smooth'
+              });
+            }
+          };
+
           const closeModal = () => {
             setSelectedProduct(null);
             document.body.style.overflow = 'auto';
           };
 
-          if (view === 'collection') {
-            return (
-              <div className="min-h-screen bg-stone-50 flex flex-col animate-fade-in">
-                <ProductModal 
-                  selectedProduct={selectedProduct} 
-                  activeImageIndex={activeImageIndex} 
-                  setActiveImageIndex={setActiveImageIndex} 
-                  closeModal={closeModal} 
-                />
-                <nav className="sticky top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200 h-16 md:h-20 flex items-center px-4 md:px-6 justify-between">
-                  <button onClick={() => navigateTo('home')} className="flex items-center gap-1 md:gap-2 text-stone-600 hover:text-amber-900 transition-colors font-medium text-sm md:text-base">
-                    <ArrowLeft size={20} /> <span className="hidden xs:inline">Povratak</span>
-                  </button>
-                  <div className="flex items-center gap-2">
-                    <Logo className="w-6 h-6 md:w-8 md:h-8" />
-                    <span className="text-lg md:text-xl font-bold text-amber-950 uppercase">Kolekcija</span>
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <a 
-                      href="https://www.instagram.com/nova.venturi/" 
-                      target="_blank" 
-                      rel="noopener noreferrer" 
-                      aria-label="Instagram @nova.venturi" 
-                      title="Instagram @nova.venturi" 
-                      className="text-stone-500 hover:text-amber-900 transition-colors p-1"
-                    >
-                      <Instagram size={20} />
-                    </a>
-                    <button 
-                      onClick={scrollToContact} 
-                      className="px-4 py-2 bg-amber-950 text-white rounded-full hover:bg-amber-900 transition-colors flex items-center gap-1.5 font-medium text-xs md:text-sm cursor-pointer shadow-sm"
-                    >
-                      <Mail size={14} />
-                      <span>Kontaktirajte nas</span>
-                    </button>
-                  </div>
-                </nav>
-                <main className="flex-grow py-8 md:py-16 px-4 md:px-6 container mx-auto">
-                  <div className="max-w-2xl mb-8 md:mb-12">
-                    <h1 className="text-3xl md:text-5xl font-bold text-stone-900 mb-3 md:mb-4">Naša Potpuna Kolekcija</h1>
-                    <p className="text-base md:text-xl text-stone-600 leading-relaxed">Svaki komad u našoj kolekciji je pažljivo osmišljen.</p>
-                  </div>
-                  <div className="flex items-center gap-3 mb-8 md:mb-12 overflow-x-auto pb-4 no-scrollbar">
-                    <div className="flex items-center gap-2 text-stone-400 flex-shrink-0 mr-2">
-                      <Filter size={16} /> <span className="text-[10px] md:text-sm font-bold uppercase tracking-wider">Filtriraj:</span>
-                    </div>
-                    {categories.map(cat => (
-                      <button key={cat} onClick={() => setActiveCategory(cat)} className={`px-4 md:px-6 py-1.5 md:py-2 rounded-full font-semibold transition-all whitespace-nowrap text-xs md:text-base ${activeCategory === cat ? 'bg-amber-900 text-white shadow-md' : 'bg-white text-stone-600 border border-stone-200 hover:border-amber-900/30'}`}>
-                        {cat}
-                      </button>
-                    ))}
-                  </div>
-                  <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 md:gap-10">
-                    {filteredProducts.map(p => (
-                      <div key={p.id} onClick={() => openModal(p)} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-100 hover:shadow-2xl transition-all duration-500 cursor-pointer">
-                        <div className="h-72 overflow-hidden relative">
-                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700" alt={p.name} referrerPolicy="no-referrer" />
-                          {p.images && <div className="absolute top-4 right-4 bg-amber-900/80 backdrop-blur-sm text-white text-[10px] font-bold px-2 py-1 rounded-md">GALERIJA ({p.images.length})</div>}
-                          <div className="absolute top-4 left-4 flex flex-wrap gap-1">
-                            {p.categories.map((cat, idx) => (
-                              <span key={idx} className="px-3 py-1 bg-white/90 backdrop-blur shadow-sm rounded-full text-xs font-bold text-stone-600 uppercase">{cat}</span>
-                            ))}
-                          </div>
-                        </div>
-                        <div className="p-8">
-                          <h3 className="text-2xl font-bold mb-3 group-hover:text-amber-900 transition-colors">{p.name}</h3>
-                          <p className="text-stone-500 text-sm mb-6 leading-relaxed h-12 line-clamp-2">{p.description}</p>
-                          <div className="flex items-center justify-between pt-4 border-t border-stone-50">
-                            <span className="text-3xl font-bold text-stone-900">{p.price}</span>
-                            <span className="flex items-center gap-2 text-amber-900 font-bold text-sm">Detalji <ArrowRight size={16} /></span>
-                          </div>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </main>
-                <footer className="bg-stone-900 text-stone-400 py-12">
-                  <div className="container mx-auto px-6 text-center">
-                    <div className="flex items-center justify-center gap-2 mb-4">
-                      <Logo className="w-6 h-6" dark={false} />
-                      <span className="text-lg font-bold text-white uppercase tracking-widest">NOVA VENTURI</span>
-                    </div>
-                    <p className="text-sm mb-6">Bezvremenski dizajn • Održivi materijali</p>
-                    <div className="flex justify-center gap-4">
-                      <a 
-                        href="https://www.instagram.com/nova.venturi/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        aria-label="Instagram @nova.venturi"
-                        title="Instagram @nova.venturi"
-                        className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 hover:text-white hover:bg-amber-900 transition-all"
-                      >
-                        <Instagram size={20} />
-                      </a>
-                      <a 
-                        href="https://www.etsy.com/shop/novaventuri/" 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        aria-label="Etsy Shop"
-                        title="Etsy Shop"
-                        className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 hover:text-white hover:bg-amber-900 transition-all"
-                      >
-                        <ShoppingBag size={20} />
-                      </a>
-                    </div>
-                  </div>
-                </footer>
-              </div>
-            );
-          }
+          const navigateTo = (page, targetId) => {
+            setCurrentPage(page);
+            setIsMenuOpen(false);
+            if (page === 'home') {
+              if (targetId) {
+                window.location.hash = targetId;
+                setTimeout(() => {
+                  const el = document.getElementById(targetId);
+                  if (el) el.scrollIntoView({ behavior: 'smooth' });
+                }, 80);
+              } else {
+                window.location.hash = '';
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+              }
+            } else {
+              setSelectedCategory(null);
+              window.location.hash = '#kolekcija';
+              window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+          };
+
+          const openCategoryPage = (categoryKey) => {
+            setCurrentPage('kolekcija');
+            setSelectedCategory(categoryKey);
+            setIsMenuOpen(false);
+            const cat = CATEGORIES_DATA.find(c => c.categoryKey === categoryKey);
+            window.location.hash = cat ? `#kolekcija/${cat.id}` : '#kolekcija';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+          };
+
+          const scrollToContact = (e) => {
+            if (e) e.preventDefault();
+            setIsMenuOpen(false);
+            if (currentPage !== 'home') {
+              navigateTo('home', 'kontakt');
+            } else {
+              const el = document.getElementById('kontakt');
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth' });
+                const emailInput = document.getElementById('contact-email');
+                if (emailInput) emailInput.focus();
+              }
+            }
+          };
+
+          const activeCategoryProducts = selectedCategory 
+            ? PRODUCTS.filter(p => p.categories.includes(selectedCategory))
+            : [];
+
+          const currentCategoryObj = CATEGORIES_DATA.find(c => c.categoryKey === selectedCategory);
 
           return (
-            <div className="min-h-screen flex flex-col animate-fade-in">
+            <div className="min-h-screen flex flex-col animate-fade-in bg-[#fafaf9]">
               <ProductModal 
                 selectedProduct={selectedProduct} 
                 activeImageIndex={activeImageIndex} 
@@ -681,23 +884,65 @@
                 isDatenschutzOpen={isDatenschutzOpen} 
                 setIsDatenschutzOpen={setIsDatenschutzOpen} 
               />
-              <nav className="fixed w-full z-50 bg-white/80 backdrop-blur-md border-b border-stone-200">
+
+              {/* Navigacija */}
+              <nav className="fixed w-full z-50 bg-white/85 backdrop-blur-md border-b border-stone-200">
                 <div className="container mx-auto px-6 h-20 flex items-center justify-between">
-                  <div className="flex items-center gap-2 cursor-pointer" onClick={() => navigateTo('home')}>
+                  <div 
+                    className="flex items-center gap-2 cursor-pointer" 
+                    onClick={() => {
+                      setSelectedCategory(null);
+                      navigateTo('home');
+                    }}
+                  >
                     <Logo className="w-8 h-8 md:w-10 md:h-10" />
                     <span className="text-xl md:text-2xl font-bold tracking-tighter text-amber-950">NOVA VENTURI</span>
                   </div>
                   <div className="hidden md:flex items-center gap-8 font-medium text-stone-600">
-                    <button onClick={() => navigateTo('collection')} className="hover:text-amber-900 transition-colors">Kolekcija</button>
-                    <a href="#o-nama" className="hover:text-amber-900 transition-colors">O nama</a>
-                    <a href="#personalizacija" className="hover:text-amber-900 transition-colors">Personalizacija</a>
+                    <button 
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        navigateTo('home');
+                      }}
+                      className={`hover:text-amber-900 transition-colors cursor-pointer ${
+                        currentPage === 'home' ? 'text-amber-950 font-bold' : ''
+                      }`}
+                    >
+                      Početna
+                    </button>
+                    <button 
+                      onClick={() => navigateTo('home', 'bestseller')}
+                      className="hover:text-amber-900 transition-colors cursor-pointer"
+                    >
+                      Best Seller
+                    </button>
+                    <button 
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        navigateTo('kolekcija');
+                      }}
+                      className={`hover:text-amber-900 transition-colors cursor-pointer flex items-center gap-1.5 ${
+                        currentPage === 'kolekcija' ? 'text-amber-950 font-bold' : ''
+                      }`}
+                    >
+                      <span>Kolekcija</span>
+                      <span className="text-[11px] bg-amber-100 text-amber-950 font-bold px-2 py-0.5 rounded-full">
+                        {CATEGORIES_DATA.length}
+                      </span>
+                    </button>
+                    <button 
+                      onClick={() => navigateTo('home', 'o-nama')}
+                      className="hover:text-amber-900 transition-colors cursor-pointer"
+                    >
+                      O nama
+                    </button>
                     <div className="flex items-center gap-3">
                       <a 
                         href="https://www.instagram.com/nova.venturi/" 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        aria-label="Instagram @nova.venturi" 
-                        title="Instagram @nova.venturi" 
+                        aria-label="Instagram @nova.venturi"
+                        title="Instagram @nova.venturi"
                         className="w-9 h-9 rounded-full bg-stone-100 hover:bg-amber-100 text-stone-700 hover:text-amber-900 flex items-center justify-center transition-colors"
                       >
                         <Instagram size={18} />
@@ -717,293 +962,447 @@
                 </div>
               </nav>
 
-              <section className="relative min-h-[90vh] md:h-screen flex items-center pt-20 overflow-hidden">
-                <div className="absolute inset-0 z-0">
-                  <img 
-                    src="https://i.postimg.cc/ZYvB3Szv/home-img.jpg" 
-                    className="w-full h-full object-cover opacity-25 md:opacity-35 scale-105" 
-                    alt="Hero background - Nova Venturi" 
-                    referrerPolicy="no-referrer" 
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/20 to-transparent"></div>
-                </div>
-                <div className="container mx-auto px-6 relative z-10">
-                  <motion.div 
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    transition={{ duration: 0.6 }}
-                    className="max-w-3xl"
-                  >
-                    <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-stone-900 mb-4 md:mb-6 leading-tight">Mali detalji, <br /><span className="text-amber-900 italic serif">velika priča.</span></h1>
-                    <p className="text-base md:text-xl text-stone-600 mb-8 md:mb-10 max-w-xl leading-relaxed">Specijalizirani za unikatne uredske dodatke i minijaturne dekoracije. Spajamo preciznost moderne tehnologije i toplinu tradicionalne obrade drveta.</p>
-                    <div className="flex flex-col sm:flex-row gap-4">
-                      <button onClick={() => navigateTo('collection')} className="px-8 py-4 bg-amber-950 text-white rounded-xl font-bold text-lg hover:bg-amber-900 transition-all flex items-center justify-center gap-2 shadow-lg shadow-amber-950/20 cursor-pointer">
-                        Pogledaj kolekciju <ArrowRight size={20} />
-                      </button>
+              {/* GLAVNI PRIKAZ: POČETNA STRANICA ILI ZASEBNA STRANICA KOLEKCIJE */}
+              {currentPage === 'home' ? (
+                <main className="flex-grow">
+                  {/* Hero Sekcija */}
+                  <section className="relative min-h-[85vh] md:h-screen flex items-center pt-20 overflow-hidden">
+                    <div className="absolute inset-0 z-0">
+                      <img 
+                        src="https://i.postimg.cc/ZYvB3Szv/home-img.jpg" 
+                        className="w-full h-full object-cover opacity-25 md:opacity-35 scale-105" 
+                        alt="Hero background - Nova Venturi" 
+                        referrerPolicy="no-referrer" 
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-stone-50 via-stone-50/20 to-transparent"></div>
                     </div>
-                  </motion.div>
-                </div>
-              </section>
-
-              {/* Kolekcija Sekcija - 1x3 prikaz s jasnim slikama i kratkim opisom */}
-              <section id="kolekcija" className="py-16 md:py-24 bg-stone-100 px-6 border-y border-stone-200/60">
-                <div className="container mx-auto">
-                  <div className="max-w-2xl mb-10 md:mb-16">
-                    <span className="text-amber-900 font-bold uppercase tracking-wider text-xs md:text-sm">Pregled Ponude</span>
-                    <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mt-2 mb-4">Kolekcija</h2>
-                    <p className="text-stone-600 text-base md:text-lg leading-relaxed">
-                      Istražite naše pažljivo osmišljene kolekcije od prirodnog drveta, izrađene s naglaskom na detalje, trajnost i toplinu prirodnog materijala.
-                    </p>
-                  </div>
-
-                  <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {FEATURED_COLLECTIONS.map((col) => (
-                      <div 
-                        key={col.id} 
-                        onClick={() => navigateTo('collection', col.category)}
-                        className="group bg-white rounded-3xl overflow-hidden shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col cursor-pointer border border-stone-200/80 hover:-translate-y-1"
+                    <div className="container mx-auto px-6 relative z-10">
+                      <motion.div 
+                        initial={{ y: 20, opacity: 0 }}
+                        animate={{ y: 0, opacity: 1 }}
+                        transition={{ duration: 0.6 }}
+                        className="max-w-3xl"
                       >
-                        <div className="relative h-64 sm:h-72 w-full overflow-hidden bg-stone-200">
-                          <img 
-                            src={col.image} 
-                            alt={col.name} 
-                            className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" 
-                            referrerPolicy="no-referrer" 
-                          />
-                          <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-md px-3.5 py-1 rounded-full text-xs font-bold text-amber-950 uppercase shadow-sm">
-                            {col.badge}
-                          </div>
+                        <h1 className="text-4xl sm:text-6xl md:text-8xl font-bold text-stone-900 leading-tight">
+                          Mali detalji, <br />
+                          <span className="text-amber-900 italic serif">velika priča.</span>
+                        </h1>
+                        <p className="mt-4 sm:mt-6 text-stone-700 text-base sm:text-lg md:text-xl max-w-xl leading-relaxed">
+                          Specijalizirani za unikatne uredske dodatke, kulinarske daske i minijaturne dekoracije. Spajamo preciznost moderne tehnologije i toplinu tradicionalne obrade drveta.
+                        </p>
+                        <div className="flex flex-wrap items-center gap-4 mt-8">
+                          <a 
+                            href="#bestseller" 
+                            className="px-8 py-3.5 bg-amber-950 text-white rounded-xl font-medium text-base hover:bg-amber-900 transition-all shadow-md cursor-pointer"
+                          >
+                            Best Seller
+                          </a>
+                          <button 
+                            onClick={() => {
+                              setSelectedCategory(null);
+                              navigateTo('kolekcija');
+                            }} 
+                            className="px-8 py-3.5 bg-white/90 backdrop-blur-sm border border-stone-300 text-stone-900 rounded-xl font-medium text-base hover:bg-white hover:border-stone-400 transition-all shadow-sm cursor-pointer"
+                          >
+                            Kolekcija
+                          </button>
                         </div>
-                        <div className="p-6 md:p-8 flex flex-col flex-grow justify-between">
-                          <div>
-                            <h3 className="text-2xl font-bold text-stone-900 mb-2.5 group-hover:text-amber-900 transition-colors">
-                              {col.name}
-                            </h3>
-                            <p className="text-stone-600 text-sm md:text-base leading-relaxed mb-6">
-                              {col.description}
-                            </p>
-                          </div>
-                          <div className="pt-4 border-t border-stone-100 flex items-center justify-between text-amber-950 font-bold text-sm">
-                            <span>Pogledaj proizvode</span>
-                            <ArrowRight size={18} className="group-hover:translate-x-1.5 transition-transform text-amber-900" />
+                      </motion.div>
+                    </div>
+                  </section>
+
+                  {/* BEST SELLER SEKCIJA (Kompaktni prikaz: vodoravni scroll s 1 do 1.5 proizvoda na mobitelu, 4-grid na desktopu) */}
+                  <section id="bestseller" className="py-10 md:py-24 bg-stone-100 px-4 sm:px-6 border-y border-stone-200/80 overflow-hidden">
+                    <div className="container mx-auto max-w-7xl">
+                      <div className="flex flex-col md:flex-row md:items-end md:justify-between mb-6 md:mb-14">
+                        <div className="max-w-2xl text-center md:text-left">
+                          <span className="text-amber-900 font-bold uppercase tracking-wider text-xs md:text-sm bg-amber-100/70 border border-amber-200/60 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 mb-2.5">
+                            <span className="text-amber-600">★</span> Najpopularniji proizvodi
+                          </span>
+                          <h2 className="text-2xl sm:text-4xl md:text-5xl font-bold text-stone-900 mb-2 md:mb-3 tracking-tight">
+                            Best Seller
+                          </h2>
+                          <p className="text-stone-600 text-sm sm:text-base md:text-lg leading-relaxed">
+                            Izbor naših najtraženijih drvenih rukotvorina od biranog punog drveta hrasta. Svaki komad je ručno obrađen i spreman za brzu narudžbu ili personalizaciju gravurom.
+                          </p>
+                        </div>
+
+                        {/* Navigacija i strelice za pregled bestsellera */}
+                        <div className="flex items-center justify-between md:justify-end gap-3 mt-4 md:mt-0">
+                          <span className="text-xs text-stone-500 font-medium sm:hidden flex items-center gap-1">
+                            <span>←</span> Povucite za ostale <span>→</span>
+                          </span>
+                          <div className="flex items-center gap-2">
+                            <button
+                              onClick={() => scrollBestseller('left')}
+                              aria-label="Prethodni proizvod"
+                              title="Prethodni proizvod"
+                              className="w-9 h-9 rounded-full bg-white border border-stone-300 text-stone-700 hover:bg-stone-50 hover:text-amber-950 flex items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer"
+                            >
+                              <ChevronLeft size={18} />
+                            </button>
+                            <button
+                              onClick={() => scrollBestseller('right')}
+                              aria-label="Sljedeći proizvod"
+                              title="Sljedeći proizvod"
+                              className="w-9 h-9 rounded-full bg-white border border-stone-300 text-stone-700 hover:bg-stone-50 hover:text-amber-950 flex items-center justify-center shadow-sm active:scale-95 transition-all cursor-pointer"
+                            >
+                              <ChevronRight size={18} />
+                            </button>
                           </div>
                         </div>
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
 
-              <section id="proizvodi" className="py-16 md:py-24 bg-stone-50 px-6">
-                <div className="container mx-auto">
-                  <div className="flex flex-col md:flex-row justify-between items-start md:items-end mb-10 md:mb-16 gap-4">
-                    <div>
-                      <h2 className="text-3xl md:text-4xl font-bold mb-2 md:mb-4">Izdvojeno iz Trgovine</h2>
-                      <p className="text-stone-600 text-sm md:text-base">Najprodavaniji unikatni komadi iz naše radionice.</p>
-                    </div>
-                    <button onClick={() => navigateTo('collection')} className="text-amber-900 font-bold flex items-center gap-2 hover:gap-3 transition-all border-b-2 border-amber-900/20 pb-1 text-sm md:text-base">
-                      Cijela Kolekcija <ArrowRight size={18} />
-                    </button>
-                  </div>
-                  
-                  <div className="grid grid-cols-1 xs:grid-cols-2 lg:grid-cols-4 gap-6 md:gap-8">
-                    {PRODUCTS.slice(0, 4).map(p => (
-                      <div key={p.id} onClick={() => openModal(p)} className="group bg-white rounded-2xl overflow-hidden shadow-sm border border-stone-100 hover:shadow-xl transition-all cursor-pointer">
-                        <div className="h-56 md:h-64 overflow-hidden relative">
-                          <img src={p.image} className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700" alt={p.name} referrerPolicy="no-referrer" />
-                          <div className="absolute top-3 left-3 flex flex-wrap gap-1">
-                            {p.categories.map((cat, idx) => (
-                              <span key={idx} className="px-2 py-0.5 bg-white/90 backdrop-blur shadow-sm rounded-full text-[10px] font-bold text-stone-600 uppercase">{cat}</span>
-                            ))}
+                      {/* Best Seller Proizvodi: Na mobitelu vodoravni scroll (1 ili 1.5 proizvoda vidljivo), na sm/md/lg ekranima čisti grid */}
+                      <div 
+                        ref={bestsellerScrollRef}
+                        className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 pt-1 -mx-4 px-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-2 lg:grid-cols-4 sm:gap-6 md:gap-8 no-scrollbar scroll-smooth"
+                      >
+                        {BEST_SELLERS.map((p, idx) => (
+                          <div
+                            key={p.id}
+                            className="w-[78vw] max-w-[310px] sm:w-auto sm:max-w-none flex-shrink-0 snap-center sm:flex-shrink sm:snap-align-none"
+                          >
+                            <BestSellerCard
+                              key={p.id}
+                              product={p}
+                              index={idx}
+                              onOpen={openModal}
+                            />
                           </div>
-                        </div>
-                        <div className="p-5 md:p-6">
-                          <h3 className="text-lg md:text-xl font-bold mb-1 md:mb-2 group-hover:text-amber-900 transition-colors line-clamp-1">{p.name}</h3>
-                          <div className="flex items-center justify-between mt-4">
-                            <span className="text-xl md:text-2xl font-bold text-stone-900">{p.price}</span>
-                            <span className="text-amber-900 font-bold text-xs md:text-sm flex items-center gap-1">Detalji <ArrowRight size={14} /></span>
-                          </div>
-                        </div>
+                        ))}
                       </div>
-                    ))}
-                  </div>
-                </div>
-              </section>
 
-              <section id="personalizacija" className="py-16 md:py-24 bg-amber-950 text-white px-6 relative overflow-hidden">
-                <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-                  <img src="https://images.unsplash.com/photo-1533090161767-e6ffed986c88?auto=format&fit=crop&q=80&w=1000" className="w-full h-full object-cover" alt="Woodworking detail" referrerPolicy="no-referrer" />
-                </div>
-                <div className="container mx-auto relative z-10 text-center">
-                  <div className="inline-flex items-center justify-center w-12 h-12 md:w-16 md:h-16 bg-amber-900 rounded-xl md:rounded-2xl mb-6 md:mb-8 shadow-xl mx-auto">
-                    <MessageSquare size={24} className="text-amber-200 md:w-8 md:h-8" />
-                  </div>
-                  <h2 className="text-3xl md:text-5xl font-bold mb-4 md:mb-6">Imate unikatnu ideju?</h2>
-                  <p className="text-base md:text-xl text-amber-100/80 mb-8 md:mb-12 max-w-2xl mx-auto leading-relaxed">Bilo da želite personaliziranu gravuru na nekom od naših proizvoda ili imate potpuno novu ideju za drveni predmet, tu smo da je oživimo.</p>
-                  <div className="flex justify-center">
-                    <a 
-                      href="mailto:info@novaventuri.com" 
-                      className="px-12 py-5 bg-white text-amber-950 rounded-2xl font-bold text-xl hover:bg-amber-50 transition-all flex items-center justify-center gap-3 shadow-2xl hover:scale-105 active:scale-95"
-                    >
-                      Pošaljite upit putem emaila <Mail size={24} />
-                    </a>
-                  </div>
-                </div>
-              </section>
 
-              <section id="o-nama" className="py-16 md:py-24 bg-white px-6 overflow-hidden">
-                <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
-                  <div className="relative">
-                    <div className="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 bg-amber-100 rounded-full blur-3xl opacity-50"></div>
-                    <div className="relative z-10 p-2 bg-white rounded-2xl md:rounded-3xl shadow-2xl border border-stone-100">
-                      <img src="https://the9thdoor.com/wp-content/uploads/2019/12/images1290-5dea8e0be6c7e.jpg" className="rounded-xl md:rounded-2xl" alt="About us" referrerPolicy="no-referrer" />
-                    </div>
-                    <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-amber-950 text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-xl z-20 hidden xs:block">
-                      <p className="text-[10px] md:text-xs font-bold opacity-80 uppercase tracking-widest mb-1">Ponosni Etsy Prodavač</p>
-                      <div className="flex items-center gap-1 text-amber-400 text-xs md:text-base">★★★★★</div>
-                    </div>
-                  </div>
-                  <div>
-                    <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">Od hobija do prepoznatljivog brenda</h2>
-                    <p className="text-stone-600 mb-4 md:mb-6 text-base md:text-lg">Nova Venturi je nastala iz strasti prema finoj obradi drveta. Ono što je počelo kao izrada poklona za prijatelje, pretvorilo se u butik trgovinu čiji su proizvodi putovali diljem svijeta putem naše Etsy trgovine.</p>
-                    <p className="text-stone-600 mb-6 md:mb-8 text-base md:text-lg">Vjerujemo da moderni dodaci ne moraju biti od plastike. Drvo nudi toplinu, težinu i teksturu koju nijedan drugi materijal ne može zamijeniti.</p>
-                    <div className="grid grid-cols-2 gap-4 md:gap-8">
-                      <div><h4 className="font-bold text-amber-950 mb-1 italic serif text-sm md:text-base">Brza Isporuka</h4><p className="text-stone-500 text-xs">Pažljivo zapakirano u ekološku ambalažu.</p></div>
-                      <div><h4 className="font-bold text-amber-950 mb-1 italic serif text-sm md:text-base">Custom Rad</h4><p className="text-stone-500 text-xs">Graviramo vaše inicijale ili logotipe.</p></div>
-                    </div>
-                  </div>
-                </div>
-              </section>
 
-              {/* Kontakt Sekcija s Formom za Email */}
-              <section id="kontakt" className="py-16 md:py-24 bg-stone-100 px-6 border-t border-stone-200/80">
-                <div className="container mx-auto max-w-4xl">
-                  <div className="text-center mb-10 md:mb-14">
-                    <span className="text-amber-900 font-bold uppercase tracking-wider text-xs md:text-sm">Direktan Kontakt</span>
-                    <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mt-2 mb-4">Kontaktirajte nas</h2>
-                    <p className="text-stone-600 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
-                      Ovdje nam možete poslati upit za narudžbu, personaliziranu gravuru ili suradnju. Rado ćemo vam odgovoriti u najkraćem roku.
-                    </p>
-                  </div>
-
-                  <div className="bg-white rounded-3xl shadow-xl border border-stone-200/80 p-6 md:p-12">
-                    <form onSubmit={handleContactSubmit} className="space-y-6">
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      {/* Info kartica za brzu narudžbu */}
+                      <div className="mt-6 p-6 sm:p-8 bg-white rounded-3xl border border-stone-200 shadow-sm flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
                         <div>
-                          <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
-                            Vaše ime
-                          </label>
-                          <input
-                            id="contact-name"
-                            type="text"
-                            value={contactName}
-                            onChange={(e) => setContactName(e.target.value)}
-                            placeholder="Npr. Marko Marković"
-                            className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60"
-                          />
+                          <h4 className="font-bold text-stone-900 text-lg sm:text-xl">Želite naručiti proizvod ili unikatnu gravuru?</h4>
+                          <p className="text-stone-600 text-sm sm:text-base mt-1">
+                            Kliknite na bilo koji proizvod za direktnu narudžbu putem WhatsAppa, Instagrama ili Emaila.
+                          </p>
                         </div>
-                        <div>
-                          <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
-                            Vaša email adresa <span className="text-amber-900">*</span>
-                          </label>
-                          <input
-                            id="contact-email"
-                            type="email"
-                            required
-                            value={contactEmail}
-                            onChange={(e) => setContactEmail(e.target.value)}
-                            placeholder="vas.email@primjer.com"
-                            className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60"
-                          />
+                        <div className="flex flex-wrap items-center justify-center gap-3">
+                          <a
+                            href="https://wa.me/491784156300?text=Pozdrav,%20zanima%20me%20narudžba%20Nova%20Venturi%20proizvoda"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="px-6 py-3.5 rounded-2xl bg-[#25D366] hover:bg-[#20bd5a] text-white font-bold text-sm shadow-md transition-all flex items-center gap-2 cursor-pointer"
+                          >
+                            <MessageCircle size={18} className="fill-current" />
+                            <span>WhatsApp Upit</span>
+                          </a>
+                          <button
+                            onClick={scrollToContact}
+                            className="px-6 py-3.5 rounded-2xl bg-amber-950 text-white font-bold text-sm hover:bg-amber-900 transition-all shadow-md flex items-center gap-2 cursor-pointer"
+                          >
+                            <Mail size={18} />
+                            <span>Kontaktirajte nas</span>
+                          </button>
                         </div>
                       </div>
+                    </div>
+                  </section>
 
+
+
+                  {/* O nama Sekcija */}
+                  <section id="o-nama" className="py-16 md:py-24 bg-white px-6 overflow-hidden">
+                    <div className="container mx-auto grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-16 items-center">
+                      <div className="relative">
+                        <div className="absolute -top-10 -left-10 w-32 h-32 md:w-40 md:h-40 bg-amber-100 rounded-full blur-3xl opacity-50"></div>
+                        <div className="relative z-10 p-2 bg-white rounded-2xl md:rounded-3xl shadow-2xl border border-stone-100">
+                          <img src="https://the9thdoor.com/wp-content/uploads/2019/12/images1290-5dea8e0be6c7e.jpg" className="rounded-xl md:rounded-2xl" alt="About us" referrerPolicy="no-referrer" />
+                        </div>
+                        <div className="absolute -bottom-4 -right-4 md:-bottom-6 md:-right-6 bg-amber-950 text-white p-4 md:p-6 rounded-xl md:rounded-2xl shadow-xl z-20 hidden xs:block">
+                          <p className="text-[10px] md:text-xs font-bold opacity-80 uppercase tracking-widest mb-1">Ponosni Etsy Prodavač</p>
+                          <div className="flex items-center gap-1 text-amber-400 text-xs md:text-base">★★★★★</div>
+                        </div>
+                      </div>
                       <div>
-                        <label htmlFor="contact-message" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
-                          Poruka ili upit za proizvod <span className="text-amber-900">*</span>
-                        </label>
-                        <textarea
-                          id="contact-message"
-                          required
-                          rows={4}
-                          value={contactMessage}
-                          onChange={(e) => setContactMessage(e.target.value)}
-                          placeholder="Napišite koji proizvod vas zanima, posebne želje za gravuru ili bilo koje pitanje..."
-                          className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60 resize-none"
-                        />
-                      </div>
-
-                      <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
-                        <button
-                          type="submit"
-                          className="px-8 py-4 bg-amber-950 text-white rounded-xl font-bold text-base hover:bg-amber-900 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-amber-950/20 cursor-pointer"
-                        >
-                          <Mail size={18} />
-                          <span>Pošaljite poruku</span>
-                        </button>
-
-                        <div className="flex flex-wrap items-center gap-4 text-stone-600 text-sm justify-center sm:justify-end">
-                          <a 
-                            href="mailto:info@novaventuri.com" 
-                            className="font-bold text-amber-900 hover:underline flex items-center gap-1.5"
-                          >
-                            <Mail size={16} /> info@novaventuri.com
-                          </a>
-                          <span className="text-stone-300">•</span>
-                          <a 
-                            href="https://www.instagram.com/nova.venturi/" 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            className="font-bold text-amber-900 hover:underline flex items-center gap-1.5"
-                          >
-                            <Instagram size={16} /> @nova.venturi
-                          </a>
+                        <h2 className="text-3xl md:text-4xl font-bold mb-4 md:mb-6">Od hobija do prepoznatljivog brenda</h2>
+                        <p className="text-stone-600 mb-4 md:mb-6 text-base md:text-lg">Nova Venturi je nastala iz strasti prema finoj obradi drveta. Ono što je počelo kao izrada poklona za prijatelje, pretvorilo se u butik radionicu čiji su proizvodi putovali diljem svijeta putem naše Etsy trgovine.</p>
+                        <p className="text-stone-600 mb-6 md:mb-8 text-base md:text-lg">Vjerujemo da moderni dodaci ne moraju biti od plastike. Drvo nudi toplinu, težinu i teksturu koju nijedan drugi materijal ne može zamijeniti.</p>
+                        <div className="grid grid-cols-2 gap-4 md:gap-8">
+                          <div><h4 className="font-bold text-amber-950 mb-1 italic serif text-sm md:text-base">Brza Isporuka</h4><p className="text-stone-500 text-xs">Pažljivo zapakirano u ekološku ambalažu.</p></div>
+                          <div><h4 className="font-bold text-amber-950 mb-1 italic serif text-sm md:text-base">Custom Rad</h4><p className="text-stone-500 text-xs">Graviramo vaše inicijale ili logotipe.</p></div>
                         </div>
                       </div>
+                    </div>
+                  </section>
 
-                      {contactSubmitted && (
-                        <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2">
-                          <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0" />
-                          <span>Vaš email program je otvoren s pripremljenim tekstom. Hvala vam na javljanju!</span>
-                        </div>
+                  {/* Kontakt Sekcija s Formom za Email */}
+                  <section id="kontakt" className="py-16 md:py-24 bg-stone-100 px-6 border-t border-stone-200/80">
+                    <div className="container mx-auto max-w-4xl">
+                      <div className="text-center mb-10 md:mb-14">
+                        <span className="text-amber-900 font-bold uppercase tracking-wider text-xs md:text-sm">Direktan Kontakt</span>
+                        <h2 className="text-3xl md:text-5xl font-bold text-stone-900 mt-2 mb-4">Kontaktirajte nas</h2>
+                        <p className="text-stone-600 text-base md:text-lg max-w-xl mx-auto leading-relaxed">
+                          Ovdje nam možete poslati upit za narudžbu, personaliziranu gravuru ili suradnju. Rado ćemo vam odgovoriti u najkraćem roku.
+                        </p>
+                      </div>
+
+                      <div className="bg-white rounded-3xl shadow-xl border border-stone-200/80 p-6 md:p-12">
+                        <form onSubmit={handleContactSubmit} className="space-y-6">
+                          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                              <label htmlFor="contact-name" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+                                Vaše ime
+                              </label>
+                              <input
+                                id="contact-name"
+                                type="text"
+                                value={contactName}
+                                onChange={(e) => setContactName(e.target.value)}
+                                placeholder="Npr. Marko Marković"
+                                className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60"
+                              />
+                            </div>
+                            <div>
+                              <label htmlFor="contact-email" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+                                Vaša email adresa <span className="text-amber-900">*</span>
+                              </label>
+                              <input
+                                id="contact-email"
+                                type="email"
+                                required
+                                value={contactEmail}
+                                onChange={(e) => setContactEmail(e.target.value)}
+                                placeholder="vas.email@primjer.com"
+                                className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60"
+                              />
+                            </div>
+                          </div>
+
+                          <div>
+                            <label htmlFor="contact-message" className="block text-xs font-bold uppercase tracking-wider text-stone-700 mb-2">
+                              Poruka ili upit za proizvod <span className="text-amber-900">*</span>
+                            </label>
+                            <textarea
+                              id="contact-message"
+                              required
+                              rows={4}
+                              value={contactMessage}
+                              onChange={(e) => setContactMessage(e.target.value)}
+                              placeholder="Napišite koji proizvod vas zanima, posebne želje za gravuru ili bilo koje pitanje..."
+                              className="w-full px-4 py-3.5 rounded-xl border border-stone-300 focus:border-amber-900 focus:ring-2 focus:ring-amber-900/20 outline-none transition-all text-stone-800 text-base bg-stone-50/60 resize-none"
+                            />
+                          </div>
+
+                          <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-4 pt-2">
+                            <button
+                              type="submit"
+                              className="px-8 py-4 bg-amber-950 text-white rounded-xl font-bold text-base hover:bg-amber-900 active:scale-[0.98] transition-all flex items-center justify-center gap-2.5 shadow-lg shadow-amber-950/20 cursor-pointer"
+                            >
+                              <Mail size={18} />
+                              <span>Pošaljite poruku</span>
+                            </button>
+
+                            <div className="flex flex-wrap items-center gap-4 text-stone-600 text-sm justify-center sm:justify-end">
+                              <a 
+                                href="mailto:info@novaventuri.com" 
+                                className="font-bold text-amber-900 hover:underline flex items-center gap-1.5"
+                              >
+                                <Mail size={16} /> info@novaventuri.com
+                              </a>
+                              <span className="text-stone-300">•</span>
+                              <a 
+                                href="https://www.instagram.com/nova.venturi/" 
+                                target="_blank" 
+                                rel="noopener noreferrer" 
+                                className="font-bold text-amber-900 hover:underline flex items-center gap-1.5"
+                              >
+                                <Instagram size={16} /> @nova.venturi
+                              </a>
+                            </div>
+                          </div>
+
+                          {contactSubmitted && (
+                            <div className="p-4 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-xl text-sm flex items-center gap-2">
+                              <CheckCircle2 size={18} className="text-emerald-600 flex-shrink-0" />
+                              <span>Vaš email program je otvoren s pripremljenim tekstom. Hvala vam na javljanju!</span>
+                            </div>
+                          )}
+                        </form>
+                      </div>
+                    </div>
+                  </section>
+                </main>
+              ) : (
+                /* ZASEBNA STRANICA ZA KOLEKCIJU / KATEGORIJE (Mobile-First, Bez sitnih filter dugmića, Velike kartice sa slajderom) */
+                <main className="flex-grow pt-28 pb-24 px-4 sm:px-6 container mx-auto max-w-6xl animate-fade-in">
+                  {/* Breadcrumb navigacija */}
+                  <div className="flex flex-wrap items-center justify-between gap-4 mb-8 pb-5 border-b border-stone-200">
+                    <div className="flex items-center gap-2 text-sm text-stone-500">
+                      <button 
+                        onClick={() => navigateTo('home')} 
+                        className="hover:text-amber-950 flex items-center gap-1 font-medium cursor-pointer transition-colors"
+                      >
+                        <ArrowLeft size={16} />
+                        <span>Početna</span>
+                      </button>
+                      <span>/</span>
+                      <button 
+                        onClick={() => setSelectedCategory(null)} 
+                        className={`font-medium transition-colors cursor-pointer ${
+                          selectedCategory === null ? 'text-amber-950 font-bold' : 'hover:text-amber-950'
+                        }`}
+                      >
+                        Kolekcija
+                      </button>
+                      {selectedCategory && (
+                        <>
+                          <span>/</span>
+                          <span className="text-amber-950 font-bold">{selectedCategory}</span>
+                        </>
                       )}
-                    </form>
-                  </div>
-                </div>
-              </section>
+                    </div>
 
+                    {selectedCategory ? (
+                      <button
+                        onClick={() => {
+                          setSelectedCategory(null);
+                          window.location.hash = '#kolekcija';
+                          window.scrollTo({ top: 0, behavior: 'smooth' });
+                        }}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer shadow-sm"
+                      >
+                        <ArrowLeft size={16} />
+                        <span>Nazad na sve kategorije</span>
+                      </button>
+                    ) : (
+                      <button
+                        onClick={() => navigateTo('home')}
+                        className="inline-flex items-center gap-2 px-4 py-2 bg-stone-100 hover:bg-stone-200 text-stone-800 rounded-xl text-xs sm:text-sm font-semibold transition-colors cursor-pointer shadow-sm"
+                      >
+                        <ArrowLeft size={16} />
+                        <span>Nazad na početnu</span>
+                      </button>
+                    )}
+                  </div>
+
+                  {/* PRIKAZ 1: Sve kategorije (jedna ispod druge sa 3s slajderom) kada kategorija nije odabrana */}
+                  {selectedCategory === null ? (
+                    <div className="space-y-8 animate-fade-in">
+                      <div className="text-center max-w-2xl mx-auto mb-10">
+                        <span className="text-amber-900 font-bold uppercase tracking-wider text-xs md:text-sm bg-amber-100/70 border border-amber-200/60 px-3.5 py-1.5 rounded-full inline-block mb-3">
+                          🪵 Kolekcije Proizvoda
+                        </span>
+                        <h1 className="text-3xl sm:text-5xl font-bold text-stone-900 mb-3 tracking-tight">
+                          Izaberite Kategoriju
+                        </h1>
+                        <p className="text-stone-600 text-sm sm:text-base leading-relaxed">
+                          Istražite naše unikatne ručne radove. Odaberite kategoriju za prikaz svih pojedinačnih proizvoda i detalja.
+                        </p>
+                      </div>
+
+                      {/* Prikaz kategorija: Jedna ispod druge, svaka kartica sa automatskim 3s slajderom slika */}
+                      <div className="flex flex-col gap-6 md:gap-8">
+                        {CATEGORIES_DATA.map((cat) => (
+                          <CategoryCard
+                            key={cat.id}
+                            category={cat}
+                            onSelect={openCategoryPage}
+                          />
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    /* PRIKAZ 2: Čista mreža (grid) proizvoda izabrane kategorije */
+                    <div className="animate-fade-in">
+                      <div className="mb-10 text-left">
+                        <span className="text-amber-900 font-bold uppercase tracking-wider text-xs bg-amber-100/80 px-3 py-1 rounded-full inline-block mb-2">
+                          Kategorija • {activeCategoryProducts.length} {activeCategoryProducts.length === 1 ? 'proizvod' : 'proizvoda'}
+                        </span>
+                        <h1 className="text-3xl sm:text-5xl font-bold text-stone-900 mb-3 tracking-tight">
+                          {selectedCategory}
+                        </h1>
+                        <p className="text-stone-600 text-sm sm:text-base max-w-2xl leading-relaxed">
+                          {currentCategoryObj?.description || 'Pogledajte sve proizvode iz ove kategorije. Kliknite na proizvod za pregled detalja i jednostavnu narudžbu.'}
+                        </p>
+                      </div>
+
+                      {/* Čista mreža (grid) proizvoda iz ove kategorije */}
+                      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                        {activeCategoryProducts.map((p) => (
+                          <ProductCard
+                            key={p.id}
+                            product={p}
+                            onOpen={openModal}
+                          />
+                        ))}
+                      </div>
+
+                      {/* Donji navigacijski blok */}
+                      <div className="mt-14 p-6 sm:p-8 bg-amber-50/60 border border-amber-900/10 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
+                        <div>
+                          <h4 className="font-bold text-stone-900 text-lg">Želite istražiti ostale kategorije?</h4>
+                          <p className="text-stone-600 text-sm mt-1">Pogledajte ostale drvene dodatke, daske i dekoracije.</p>
+                        </div>
+                        <button
+                          onClick={() => {
+                            setSelectedCategory(null);
+                            window.location.hash = '#kolekcija';
+                            window.scrollTo({ top: 0, behavior: 'smooth' });
+                          }}
+                          className="px-6 py-3 bg-amber-950 hover:bg-amber-900 text-white rounded-xl font-bold text-sm transition-all flex items-center gap-2 cursor-pointer shadow-md"
+                        >
+                          <ArrowLeft size={16} />
+                          <span>Sve kategorije</span>
+                        </button>
+                      </div>
+                    </div>
+                  )}
+                </main>
+              )}
+
+              {/* Footer */}
               <footer className="bg-stone-900 pt-20 pb-10 border-t border-white/5 px-6 text-stone-400">
                 <div className="container mx-auto grid md:grid-cols-4 gap-12 mb-16">
                   <div className="col-span-2">
-                    <div className="flex items-center gap-2 mb-6 cursor-pointer text-white" onClick={() => navigateTo('home')}>
+                    <div 
+                      className="flex items-center gap-2 mb-6 cursor-pointer text-white" 
+                      onClick={() => {
+                        setSelectedCategory(null);
+                        navigateTo('home');
+                      }}
+                    >
                       <Logo className="w-8 h-8" dark={false} />
                       <span className="text-xl font-bold tracking-tighter uppercase">NOVA VENTURI</span>
                     </div>
-                    <p className="text-stone-400 max-w-sm mb-6">Butik radionica specijalizirana za vrhunske drvene uredske dodatke i unikatne detalje.</p>
+                    <p className="text-stone-400 max-w-sm mb-6">Butik radionica specijalizirana za vrhunske drvene uredske dodatke, kulinarske daske i unikatne detalje.</p>
                     <div className="flex gap-4">
-                      <a href="https://www.instagram.com/nova.venturi/" target="_blank" rel="noopener noreferrer" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all">
+                      <a href="https://www.instagram.com/nova.venturi/" target="_blank" rel="noopener noreferrer" aria-label="Instagram @nova.venturi" title="Instagram @nova.venturi" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all">
                         <Instagram size={20} />
                       </a>
-                      <a href="#" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all">
-                        <Facebook size={20} />
+                      <a href="https://www.etsy.com/shop/novaventuri/" target="_blank" rel="noopener noreferrer" aria-label="Etsy Shop" title="Etsy Shop" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all">
+                        <ShoppingBag size={20} />
                       </a>
-                      <button onClick={scrollToContact} className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all cursor-pointer">
+                      <button onClick={scrollToContact} aria-label="Kontakt" className="w-10 h-10 bg-white/5 rounded-full flex items-center justify-center text-stone-400 shadow-sm hover:text-white hover:bg-amber-900 transition-all cursor-pointer">
                         <Mail size={20} />
                       </button>
                     </div>
                   </div>
                   <div>
-                    <h4 className="font-bold mb-6 text-white">Kategorije</h4>
+                    <h4 className="font-bold mb-6 text-white">Best Seller Proizvodi</h4>
                     <ul className="space-y-4">
-                      <li><button onClick={() => { navigateTo('collection'); setActiveCategory('Uredski dodaci'); }} className="hover:text-amber-500 transition-colors">Uredski dodaci</button></li>
-                      <li><button onClick={() => { navigateTo('collection'); setActiveCategory('Organizacija'); }} className="hover:text-amber-500 transition-colors">Organizacija</button></li>
-                      <li><button onClick={() => { navigateTo('collection'); setActiveCategory('Kuhinja'); }} className="hover:text-amber-500 transition-colors">Kuhinja</button></li>
+                      {BEST_SELLERS.map(p => (
+                        <li key={p.id}>
+                          <button 
+                            onClick={() => openModal(p)} 
+                            className="hover:text-amber-500 transition-colors cursor-pointer text-left text-sm"
+                          >
+                            {p.name}
+                          </button>
+                        </li>
+                      ))}
                     </ul>
                   </div>
                   <div>
                     <h4 className="font-bold mb-6 text-white">Kontakt & Info</h4>
                     <ul className="space-y-4">
-                      <li><button onClick={scrollToContact} className="hover:text-amber-500 transition-colors">Kontaktirajte nas</button></li>
+                      <li><button onClick={scrollToContact} className="hover:text-amber-500 transition-colors cursor-pointer">Kontaktirajte nas</button></li>
                       <li><a href="mailto:info@novaventuri.com" className="hover:text-amber-500 transition-colors">info@novaventuri.com</a></li>
                       <li><a href="https://www.instagram.com/nova.venturi/" target="_blank" rel="noopener noreferrer" className="hover:text-amber-500 transition-colors">Instagram @nova.venturi</a></li>
                     </ul>
@@ -1012,12 +1411,13 @@
                 <div className="border-t border-white/10 pt-10 flex flex-col md:flex-row justify-between items-center gap-4 text-stone-500 text-sm">
                   <p>© 2024 Nova Venturi Woodworking.</p>
                   <div className="flex gap-6">
-                    <button onClick={() => { setIsImpressumOpen(true); setShowImpressumDetails(false); }} className="hover:text-amber-500 transition-colors">Impressum</button>
-                    <button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-amber-500 transition-colors">Datenschutz</button>
+                    <button onClick={() => { setIsImpressumOpen(true); setShowImpressumDetails(false); }} className="hover:text-amber-500 transition-colors cursor-pointer">Impressum</button>
+                    <button onClick={() => setIsDatenschutzOpen(true)} className="hover:text-amber-500 transition-colors cursor-pointer">Datenschutz</button>
                   </div>
                 </div>
               </footer>
 
+              {/* Mobilni Meni Drawer */}
               <AnimatePresence>
                 {isMenuOpen && (
                   <motion.div 
@@ -1031,30 +1431,112 @@
                         <Logo className="w-8 h-8" />
                         <span className="text-xl font-bold tracking-tighter text-amber-950">NOVA VENTURI</span>
                       </div>
-                      <button onClick={() => setIsMenuOpen(false)}>
+                      <button onClick={() => setIsMenuOpen(false)} className="p-2">
                         <X size={28} />
                       </button>
                     </div>
-                    <div className="flex-grow p-6 flex flex-col gap-6 text-xl font-bold text-stone-800">
-                      <button onClick={() => { navigateTo('collection'); setIsMenuOpen(false); }} className="flex items-center justify-between border-b border-stone-100 pb-3 text-left">
-                        Kolekcija <ChevronRight size={20} className="text-amber-900" />
+                    <div className="flex-grow p-6 flex flex-col gap-4 text-lg font-bold text-stone-800 overflow-y-auto">
+                      {/* Početna */}
+                      <button 
+                        onClick={() => navigateTo('home')} 
+                        className={`flex items-center justify-between border-b border-stone-100 pb-3 transition-colors text-left w-full cursor-pointer ${
+                          currentPage === 'home' ? 'text-amber-950 font-bold' : 'hover:text-amber-900'
+                        }`}
+                      >
+                        <span>Početna</span>
+                        <ChevronRight size={18} className="text-stone-400" />
                       </button>
-                      <a href="#o-nama" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between border-b border-stone-100 pb-3">
-                        O nama <ChevronRight size={20} className="text-amber-900" />
-                      </a>
-                      <a href="#personalizacija" onClick={() => setIsMenuOpen(false)} className="flex items-center justify-between border-b border-stone-100 pb-3">
-                        Personalizacija <ChevronRight size={20} className="text-amber-900" />
-                      </a>
-                      <button onClick={scrollToContact} className="flex items-center justify-between border-b border-stone-100 pb-3 text-left">
-                        Kontakt <ChevronRight size={20} className="text-amber-900" />
+
+                      {/* Best Seller */}
+                      <button 
+                        onClick={() => navigateTo('home', 'bestseller')} 
+                        className="flex items-center justify-between border-b border-stone-100 pb-3 hover:text-amber-900 transition-colors text-left w-full cursor-pointer"
+                      >
+                        <div className="flex items-center gap-2.5">
+                          <span className="text-amber-600">★</span>
+                          <span>Best Seller</span>
+                        </div>
+                        <ChevronRight size={18} className="text-stone-400" />
                       </button>
-                      <div className="mt-2 flex flex-col gap-3">
+
+                      {/* Kolekcija s potkategorijama */}
+                      <div className="border-b border-stone-100 pb-3">
+                        <div 
+                          className="flex items-center justify-between py-1 cursor-pointer select-none"
+                          onClick={() => setIsMenuCollectionExpanded(!isMenuCollectionExpanded)}
+                        >
+                          <div className="flex items-center gap-2.5 text-stone-900">
+                            <span>🪵</span>
+                            <span className={currentPage === 'kolekcija' ? 'text-amber-950 font-bold' : ''}>Kolekcija</span>
+                            <span className="text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded-full">
+                              {CATEGORIES_DATA.length}
+                            </span>
+                          </div>
+                          <ChevronDown 
+                            size={18} 
+                            className={`text-stone-400 transition-transform duration-200 ${isMenuCollectionExpanded ? 'rotate-180' : ''}`} 
+                          />
+                        </div>
+
+                        {isMenuCollectionExpanded && (
+                          <div className="mt-2.5 pl-3 flex flex-col gap-1.5 text-sm font-medium">
+                            <button
+                              onClick={() => navigateTo('kolekcija')}
+                              className={`w-full py-2.5 px-3 rounded-xl flex items-center justify-between text-left transition-colors cursor-pointer ${
+                                currentPage === 'kolekcija' && selectedCategory === null 
+                                  ? 'bg-amber-100 text-amber-950 font-bold' 
+                                  : 'hover:bg-stone-50 text-stone-700'
+                              }`}
+                            >
+                              <span>Sve kategorije (pregled)</span>
+                              <span className="text-xs bg-stone-200/80 px-2 py-0.5 rounded-full font-bold">{CATEGORIES_DATA.length}</span>
+                            </button>
+
+                            {CATEGORIES_DATA.map((cat) => (
+                              <button
+                                key={cat.id}
+                                onClick={() => openCategoryPage(cat.categoryKey)}
+                                className={`w-full py-2.5 px-3 rounded-xl flex items-center justify-between text-left transition-colors cursor-pointer ${
+                                  currentPage === 'kolekcija' && selectedCategory === cat.categoryKey 
+                                    ? 'bg-amber-100 text-amber-950 font-bold' 
+                                    : 'hover:bg-stone-50 text-stone-700'
+                                }`}
+                              >
+                                <span>{cat.name}</span>
+                                <span className="text-xs bg-stone-200/80 px-2 py-0.5 rounded-full font-bold">{cat.count}</span>
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+
+
+
+                      {/* O nama */}
+                      <button 
+                        onClick={() => navigateTo('home', 'o-nama')} 
+                        className="flex items-center justify-between border-b border-stone-100 pb-3 hover:text-amber-900 transition-colors text-left w-full cursor-pointer"
+                      >
+                        <span>O nama</span>
+                        <ChevronRight size={18} className="text-stone-400" />
+                      </button>
+
+                      {/* Kontakt */}
+                      <button 
+                        onClick={scrollToContact} 
+                        className="flex items-center justify-between border-b border-stone-100 pb-3 text-left cursor-pointer hover:text-amber-900 transition-colors w-full"
+                      >
+                        <span>Kontakt</span>
+                        <ChevronRight size={18} className="text-stone-400" />
+                      </button>
+
+                      <div className="mt-auto pt-4 flex flex-col gap-3">
                         <button 
                           onClick={scrollToContact} 
                           className="w-full py-4 bg-amber-950 text-white rounded-2xl flex items-center justify-center gap-3 shadow-xl shadow-amber-950/20 text-base font-bold cursor-pointer"
                         >
                           <Mail size={18} />
-                          Kontaktirajte nas
+                          <span>Kontaktirajte nas</span>
                         </button>
                         <a 
                           href="https://www.instagram.com/nova.venturi/" 
@@ -1062,7 +1544,8 @@
                           rel="noopener noreferrer" 
                           className="w-full py-3.5 bg-stone-100 text-stone-800 rounded-2xl flex items-center justify-center gap-2.5 font-semibold hover:bg-stone-200 transition-colors text-base"
                         >
-                          <Instagram size={20} className="text-amber-900" /> Posjetite naš Instagram
+                          <Instagram size={20} className="text-amber-900" /> 
+                          <span>Posjetite naš Instagram</span>
                         </a>
                       </div>
                     </div>
