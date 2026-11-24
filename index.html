@@ -86,6 +86,41 @@
         .animate-slide-up { animation: slideUp 0.5s ease-out forwards; }
         .animate-zoom-in { animation: zoomIn 0.2s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
         .serif { font-family: 'Playfair Display', serif; }
+        .product-modal-card {
+            display: flex;
+            flex-direction: column;
+            max-width: 42rem;
+            max-height: 92vh;
+            overflow-y: auto;
+        }
+        .product-modal-media {
+            width: 100%;
+            flex-shrink: 0;
+            display: flex;
+            flex-direction: column;
+        }
+        .product-modal-body {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        @media (min-width: 768px) and (orientation: landscape), (min-width: 1025px) {
+            .product-modal-card {
+                flex-direction: row;
+                max-width: min(94vw, 1260px);
+                max-height: 90vh;
+                overflow: hidden;
+            }
+            .product-modal-media {
+                width: 58%;
+                justify-content: center;
+                overflow-y: auto;
+            }
+            .product-modal-body {
+                width: 42%;
+                overflow-y: auto;
+            }
+        }
         #error-display { position: fixed; bottom: 0; left: 0; right: 0; background: #fee2e2; color: #991b1b; padding: 1rem; font-family: monospace; z-index: 9999; border-top: 1px solid #f87171; display: none; }
     </style>
     <script>
@@ -169,6 +204,8 @@
             collectionAllCategoriesBtn: 'Sve kategorije',
             kuhinjaDisclaimerTitle: 'Napomena o cijenama i gravuri',
             kuhinjaDisclaimerText: 'Prikazane cijene su bez troškova dostave (poštarine). Za unikatnu personalizaciju i lasersku gravuru po vašoj želji, slobodno nas kontaktirajte — cijena gravure se formira individualno u zavisnosti od motiva i pripreme.',
+            dodaciDisclaimerTitle: 'Napomena o cijenama i dostavi',
+            dodaciDisclaimerText: 'Prikazane cijene su bez troškova dostave (poštarine). Poštarina se obračunava naknadno prilikom narudžbe — za sve informacije o dostavi i narudžbi slobodno nas kontaktirajte.',
             modalAboutProduct: 'O proizvodu',
             modalOrderWhatsApp: 'Naruči putem WhatsAppa',
             modalFootnote: '*Svi naši proizvodi su unikatni. Izrađujemo i po vašim individualnim željama i dimenzijama.',
@@ -235,6 +272,8 @@
             collectionAllCategoriesBtn: 'Alle Kategorien',
             kuhinjaDisclaimerTitle: 'Hinweis zu Preisen und Gravur',
             kuhinjaDisclaimerText: 'Die angegebenen Preise verstehen sich zzgl. Versandkosten. Für individuelle Personalisierungen und Lasergravuren kontaktieren Sie uns bitte gerne — die Gravurkosten richten sich individuell nach Motiv und Aufwand.',
+            dodaciDisclaimerTitle: 'Hinweis zu Preisen und Versand',
+            dodaciDisclaimerText: 'Die angegebenen Preise verstehen sich zzgl. Versandkosten. Für alle Informationen zu Versandkosten und Bestellungen kontaktieren Sie uns bitte gerne.',
             modalAboutProduct: 'Über das Produkt',
             modalOrderWhatsApp: 'Per WhatsApp bestellen',
             modalFootnote: '*Alle unsere Produkte sind Unikate. Wir fertigen auch nach Ihren individuellen Wünschen und Maßen.',
@@ -301,6 +340,8 @@
             collectionAllCategoriesBtn: 'All Categories',
             kuhinjaDisclaimerTitle: 'Note on Pricing & Engraving',
             kuhinjaDisclaimerText: 'Displayed prices do not include shipping costs. For unique custom laser engravings according to your wishes, please contact us — engraving prices vary based on design complexity and size.',
+            dodaciDisclaimerTitle: 'Note on Pricing & Shipping',
+            dodaciDisclaimerText: 'Displayed prices do not include shipping costs. Shipping fees are calculated separately upon ordering — please feel free to contact us for delivery details.',
             modalAboutProduct: 'About product',
             modalOrderWhatsApp: 'Order via WhatsApp',
             modalFootnote: '*All our products are unique. We also craft according to your personal dimensions and custom ideas.',
@@ -573,6 +614,53 @@
               'https://i.etsystatic.com/46489053/r/il/99b772/7883518595/il_794xN.7883518595_dcho.jpg'
             ],
             etsyUrl: 'https://www.etsy.com/de-en/listing/4476603698/minimalist-oak-wood-phone-stand-desktop'
+          },
+          {
+            id: 'nv-zlatni-prevjesak',
+            name: {
+              bs: 'Zlatni prevjesak',
+              de: 'Goldener Anhänger',
+              en: 'Golden Pendant'
+            },
+            description: {
+              bs: 'Elegantan metalni prevjesak u zlatnoj boji, precizne izrade i profinjenog izgleda. Izdržljiv i stilski detalj idealan za ključeve, torbu ili kao poseban poklon.',
+              de: 'Eleganter Metallanhänger in Goldoptik mit präziser Verarbeitung und edlem Finish. Ein langlebiges und stilvolles Detail für Schlüssel, Tasche oder als besonderes Geschenk.',
+              en: 'Elegant gold-toned metal pendant featuring precise craftsmanship and a refined finish. A durable and stylish accent for keys, bags, or gifting.'
+            },
+            price: '4,99 €',
+            image: 'https://i.postimg.cc/HxcDgH5Y/IMG-2230.jpg',
+            categories: ['Dodaci'],
+            images: [
+              'https://i.postimg.cc/HxcDgH5Y/IMG-2230.jpg',
+              'https://i.postimg.cc/1RKt7r9n/Gemini-Generated-Image-heix44heix44heix-(2).jpg',
+              'https://i.postimg.cc/bNQPrz5q/Gemini-Generated-Image-heix44heix44heix-(1).jpg',
+              'https://i.postimg.cc/VLjwvYh1/Gemini-Generated-Image-o9m4tao9m4tao9m4-(3).jpg',
+              'https://i.postimg.cc/X7wWqVP6/Gemini-Generated-Image-wsluvswsluvswslu.jpg'
+            ],
+            etsyUrl: 'https://www.etsy.com/shop/NovaVenturi'
+          },
+          {
+            id: 'nv-metalna-kartica',
+            name: {
+              bs: 'Metalna kartica',
+              de: 'Metallkarte',
+              en: 'Metal Card'
+            },
+            description: {
+              bs: 'Luksuzna crna metalna kartica vrhunske izrade, izrađena od čvrstog metala s elegantnim mat završetkom. Mogućnost precizne laserske gravure vašeg logotipa, imena, QR koda ili unikatnog dizajna po želji. Za dogovor oko željenog dizajna slobodno nam se javite (cijena je po komadu).',
+              de: 'Luxuriöse schwarze Metallkarte aus hochwertigem, massivem Metall mit edlem Matt-Finish. Ideal für präzise Lasergravuren Ihres Logos, Namens, QR-Codes oder Wunschmotivs. Für die Abstimmung Ihres individuellen Designs kontaktieren Sie uns bitte gerne (Preis pro Stück).',
+              en: 'Luxury black metal card crafted from solid metal with a refined matte finish. Ideal for precision laser engraving of your logo, name, QR code, or custom design. Please contact us to arrange your personalized design (price per piece).'
+            },
+            price: '4,99 €',
+            image: 'https://i.postimg.cc/wvKRvf40/metalna-kartica1.jpg',
+            categories: ['Dodaci'],
+            images: [
+              'https://i.postimg.cc/wvKRvf40/metalna-kartica1.jpg',
+              'https://i.postimg.cc/hjFQjyZ3/metalna-kartica.jpg',
+              'https://i.postimg.cc/wvKRvf44/metalna-kartica2.jpg',
+              'https://i.postimg.cc/nz89zRS2/metalna-kartica3.jpg'
+            ],
+            etsyUrl: 'https://www.etsy.com/shop/NovaVenturi'
           }
         ];
 
@@ -641,6 +729,18 @@
               en: 'Wall organizers with mail slots and strong key magnets, plus multipurpose stands.'
             },
             count: PRODUCTS.filter(p => p.categories.includes('Organizacija')).length
+          },
+          {
+            id: 'dodaci',
+            categoryKey: 'Dodaci',
+            name: { bs: 'Dodaci', de: 'Accessoires', en: 'Accessories' },
+            subtitle: { bs: 'Metalni prevjesci & luksuzne kartice', de: 'Metallanhänger & Metallkarten', en: 'Metal Charms & Luxury Cards' },
+            description: {
+              bs: 'Elegantni metalni prevjesci, luksuzne crne metalne kartice s gravurom po želji i pažljivo odabrani dodaci.',
+              de: 'Elegante Metallanhänger, luxuriöse schwarze Metallkarten mit Wunschgravur und ausgewählte Accessoires.',
+              en: 'Elegant metal pendants, luxury black metal cards with custom engraving, and curated accessories.'
+            },
+            count: PRODUCTS.filter(p => p.categories.includes('Dodaci')).length
           }
         ];
 
@@ -783,11 +883,17 @@
         // Velika elegantna kartica kategorije sa automatskim foto-slajderom (svake 3 sec) - Mobile First
         const CategoryCard = ({ category, onSelect, lang = 'bs', t }) => {
           const categoryProducts = PRODUCTS.filter(p => p.categories.includes(category.categoryKey));
-          const images = categoryProducts.map(p => ({
-            url: p.image,
-            productName: getProductName(p, lang),
-            price: p.price
-          }));
+          const images = (categoryProducts.length === 1 && categoryProducts[0].images && categoryProducts[0].images.length > 1)
+            ? categoryProducts[0].images.map(imgUrl => ({
+                url: imgUrl,
+                productName: getProductName(categoryProducts[0], lang),
+                price: categoryProducts[0].price
+              }))
+            : categoryProducts.map(p => ({
+                url: p.image,
+                productName: getProductName(p, lang),
+                price: p.price
+              }));
 
           const [currentIndex, setCurrentIndex] = useState(0);
 
@@ -829,7 +935,7 @@
               {/* Bedž s brojem proizvoda i indikator slajdera na vrhu */}
               <div className="absolute top-5 left-5 right-5 flex items-center justify-between z-10 pointer-events-none">
                 <span className="bg-stone-900/60 backdrop-blur-md text-amber-200 text-xs font-semibold px-3 py-1.5 rounded-full border border-white/10 shadow-sm">
-                  {category.count} {lang === 'de' ? 'Produkte' : lang === 'en' ? 'products' : 'proizvoda'}
+                  {category.count} {lang === 'de' ? (category.count === 1 ? 'Produkt' : 'Produkte') : lang === 'en' ? (category.count === 1 ? 'product' : 'products') : (category.count === 1 ? 'proizvod' : 'proizvoda')}
                 </span>
 
                 {images.length > 1 && (
@@ -892,11 +998,11 @@
               onClick={() => onOpen(product)}
               className="group bg-white rounded-2xl overflow-hidden border border-stone-200/90 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col cursor-pointer hover:-translate-y-1"
             >
-              <div className="relative aspect-[4/3] bg-stone-100 overflow-hidden">
+              <div className="relative aspect-[3/2] bg-stone-100 overflow-hidden">
                 <img 
                   src={product.image} 
                   alt={productName}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                   referrerPolicy="no-referrer"
                 />
@@ -964,44 +1070,42 @@
             ? `Hello Nova Venturi Team,\n\nI am interested in "${productName}" (${selectedProduct.price}).\n\nPlease let me know how to order and options for custom personalization/engraving.\n\nThank you!`
             : `Pozdrav,\n\nZainteresiran/a sam za proizvod "${productName}" (${selectedProduct.price}).\n\nMolim vas za informacije o narudžbi i mogućnostima personalizirane gravure.\n\nHvala!`;
 
-          const isCuttingBoard = selectedProduct.isCuttingBoard || selectedProduct.categories?.includes('Kuhinja');
-
           return (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 md:p-10 animate-fade-in">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center p-3 sm:p-5 md:p-8 animate-fade-in">
               <div className="absolute inset-0 bg-stone-900/80 backdrop-blur-sm" onClick={closeModal}></div>
               <motion.div 
                 initial={{ scale: 0.95, opacity: 0 }}
                 animate={{ scale: 1, opacity: 1 }}
-                className="relative bg-white w-full max-w-5xl max-h-[90vh] rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row z-10"
+                className="relative bg-white w-full rounded-3xl shadow-2xl z-10 product-modal-card no-scrollbar"
               >
-                <button onClick={closeModal} className="absolute top-4 right-4 z-20 p-2 bg-white/90 rounded-full shadow-sm hover:bg-stone-100 transition-colors">
-                  <X size={24} />
+                <button onClick={closeModal} className="absolute top-3.5 right-3.5 sm:top-4 sm:right-4 z-20 p-2 bg-white/95 rounded-full shadow-md hover:bg-stone-100 transition-colors cursor-pointer">
+                  <X size={22} />
                 </button>
-                <div className="w-full md:w-1/2 bg-stone-50 flex flex-col">
-                  <div className="relative flex-grow h-[300px] md:h-auto overflow-hidden">
-                    <img src={gallery[activeImageIndex]} className="w-full h-full object-cover" alt={productName} referrerPolicy="no-referrer" />
+                <div className="bg-stone-50 product-modal-media">
+                  <div className="relative w-full aspect-[3/2] bg-stone-100 overflow-hidden flex items-center justify-center">
+                    <img src={gallery[activeImageIndex]} className="w-full h-full object-contain" alt={productName} referrerPolicy="no-referrer" />
                     {gallery.length > 1 && (
-                      <div className="absolute inset-0 flex items-center justify-between px-4">
-                        <button onClick={() => setActiveImageIndex(i => i === 0 ? gallery.length - 1 : i - 1)} className="p-2 bg-white/50 rounded-full shadow-sm hover:bg-white/80 transition-all">
+                      <div className="absolute inset-0 flex items-center justify-between px-3 sm:px-4 pointer-events-none">
+                        <button onClick={() => setActiveImageIndex(i => i === 0 ? gallery.length - 1 : i - 1)} className="pointer-events-auto p-2 bg-white/80 text-stone-800 rounded-full shadow-sm hover:bg-white transition-all cursor-pointer">
                           <ChevronLeft />
                         </button>
-                        <button onClick={() => setActiveImageIndex(i => i === gallery.length - 1 ? 0 : i + 1)} className="p-2 bg-white/50 rounded-full shadow-sm hover:bg-white/80 transition-all">
+                        <button onClick={() => setActiveImageIndex(i => i === gallery.length - 1 ? 0 : i + 1)} className="pointer-events-auto p-2 bg-white/80 text-stone-800 rounded-full shadow-sm hover:bg-white transition-all cursor-pointer">
                           <ChevronRight />
                         </button>
                       </div>
                     )}
                   </div>
                   {gallery.length > 1 && (
-                    <div className="p-4 flex gap-2 overflow-x-auto bg-stone-100/50 no-scrollbar">
+                    <div className="p-3 sm:p-4 flex gap-2.5 overflow-x-auto bg-stone-100/70 no-scrollbar">
                       {gallery.map((img, idx) => (
-                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`relative flex-shrink-0 w-16 h-16 rounded-lg overflow-hidden border-2 transition-all ${activeImageIndex === idx ? 'border-amber-900' : 'border-transparent opacity-60'}`}>
-                          <img src={img} className="w-full h-full object-cover" alt={`${productName} gallery ${idx}`} referrerPolicy="no-referrer" />
+                        <button key={idx} onClick={() => setActiveImageIndex(idx)} className={`relative flex-shrink-0 w-20 aspect-[3/2] bg-white rounded-lg overflow-hidden border-2 transition-all cursor-pointer ${activeImageIndex === idx ? 'border-amber-900 shadow-sm' : 'border-transparent opacity-60 hover:opacity-90'}`}>
+                          <img src={img} className="w-full h-full object-contain" alt={`${productName} gallery ${idx}`} referrerPolicy="no-referrer" />
                         </button>
                       ))}
                     </div>
                   )}
                 </div>
-                <div className="w-full md:w-1/2 p-6 md:p-12 overflow-y-auto flex flex-col">
+                <div className="p-6 sm:p-8 lg:p-10 product-modal-body">
                   <div className="flex-grow">
                     <div className="flex flex-wrap gap-2 mb-4">
                       {selectedProduct.categories.map((cat, idx) => (
@@ -1015,13 +1119,11 @@
                       <p className="text-stone-600 leading-relaxed text-sm md:text-base">{productDesc}</p>
                     </div>
 
-                    {/* Disclaimer za kuhinjske daske ako se pregledava daska za rezanje */}
-                    {isCuttingBoard && (
-                      <div className="mb-6 p-4 bg-amber-50/90 border border-amber-900/15 rounded-2xl text-xs text-stone-700 leading-relaxed">
-                        <span className="font-bold text-amber-950 block mb-1">ℹ️ {t.kuhinjaDisclaimerTitle}</span>
-                        <p className="text-stone-600">{t.kuhinjaDisclaimerText}</p>
-                      </div>
-                    )}
+                    {/* Napomena o cijenama, dostavi i gravuri ispod svakog proizvoda */}
+                    <div className="mb-6 p-4 bg-amber-50/90 border border-amber-900/15 rounded-2xl text-xs text-stone-700 leading-relaxed">
+                      <span className="font-bold text-amber-950 block mb-1">ℹ️ {t.kuhinjaDisclaimerTitle}</span>
+                      <p className="text-stone-600">{t.kuhinjaDisclaimerText}</p>
+                    </div>
                   </div>
                   <div className="space-y-4 pt-2">
                     <a 
@@ -1529,7 +1631,7 @@
                   <section className="relative min-h-[85vh] md:h-screen flex items-center pt-20 overflow-hidden">
                     <div className="absolute inset-0 z-0">
                       <img 
-                        src="https://i.postimg.cc/ZYvB3Szv/home-img.jpg" 
+                        src="https://i.postimg.cc/pV5h8HM8/home-img2.jpg" 
                         className="w-full h-full object-cover opacity-25 md:opacity-35 scale-105" 
                         alt="Hero background - Nova Venturi" 
                         referrerPolicy="no-referrer" 
@@ -1885,7 +1987,7 @@
                     <div className="animate-fade-in">
                       <div className="mb-8 text-left">
                         <span className="text-amber-900 font-bold uppercase tracking-wider text-xs bg-amber-100/80 px-3 py-1 rounded-full inline-block mb-2">
-                          {currentCategoryName} • {activeCategoryProducts.length} {currentLang === 'de' ? 'Produkte' : currentLang === 'en' ? 'products' : 'proizvoda'}
+                          {currentCategoryName} • {activeCategoryProducts.length} {currentLang === 'de' ? (activeCategoryProducts.length === 1 ? 'Produkt' : 'Produkte') : currentLang === 'en' ? (activeCategoryProducts.length === 1 ? 'product' : 'products') : (activeCategoryProducts.length === 1 ? 'proizvod' : 'proizvoda')}
                         </span>
                         <h1 className="text-3xl sm:text-5xl font-bold text-stone-900 mb-3 tracking-tight">
                           {currentCategoryName}
@@ -1908,16 +2010,14 @@
                         ))}
                       </div>
 
-                      {/* Poseban profesionalni disclaimer ispod proizvoda za kategoriju KUHINJA */}
-                      {selectedCategory === 'Kuhinja' && (
-                        <div className="mt-8 p-5 bg-amber-50/90 border border-amber-900/20 rounded-2xl text-stone-700 text-xs sm:text-sm flex items-start gap-3 shadow-xs">
-                          <span className="text-amber-900 font-bold text-base mt-0.5">ℹ️</span>
-                          <div>
-                            <span className="font-bold text-amber-950 block mb-1">{t.kuhinjaDisclaimerTitle}</span>
-                            <p className="text-stone-600 leading-relaxed">{t.kuhinjaDisclaimerText}</p>
-                          </div>
+                      {/* Napomena o cijenama, dostavi i gravuri ispod proizvoda svake kategorije */}
+                      <div className="mt-8 p-5 bg-amber-50/90 border border-amber-900/20 rounded-2xl text-stone-700 text-xs sm:text-sm flex items-start gap-3 shadow-xs">
+                        <span className="text-amber-900 font-bold text-base mt-0.5">ℹ️</span>
+                        <div>
+                          <span className="font-bold text-amber-950 block mb-1">{t.kuhinjaDisclaimerTitle}</span>
+                          <p className="text-stone-600 leading-relaxed">{t.kuhinjaDisclaimerText}</p>
                         </div>
-                      )}
+                      </div>
 
                       {/* Donji navigacijski blok */}
                       <div className="mt-14 p-6 sm:p-8 bg-amber-50/60 border border-amber-900/10 rounded-3xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
